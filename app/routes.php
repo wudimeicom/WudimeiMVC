@@ -1,7 +1,7 @@
 <?php
 
 
-$route['/welcome.html'] = 'IndexController@welcome';
+$route['/welcome.html'] = '\\App\\Controllers\\IndexController@welcome';
 $route['/article/(:num).html'] = 'IndexController@articleDetail';
 $route['/article/(:any)/(:num).html'] = 'IndexController@articleList';
 $route['/article/([a-z]+)/([0-9]+).html'] = 'IndexController@articleList';
