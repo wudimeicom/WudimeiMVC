@@ -1,15 +1,19 @@
 <?php
-if( file_exists(  __DIR__ .'/../vendor/Wudimei/autoload2.php' )){
-	require_once  __DIR__ .'/../vendor/Wudimei/autoload2.php';
+if( file_exists( 'D:/www/wudimei/library/Wudimei/autoload.php' )){
+	
+	require_once 'D:/www/wudimei/library/Wudimei/autoload.php';
 }
 else{
-	require_once 'D:/www/wudimei/library/Wudimei/autoload2.php';
+	require_once  __DIR__ .'/../vendor/Wudimei/autoload.php';
 }
 require_once  __DIR__ .'/autoload.php';
 
  
-use Wudimei\Router;
 
+use Wudimei\ClassAlias;
+ 
+
+ClassAlias::withStaticProxies(); //create StaticProxies alias,eg Session,DB,and so on
 
 Session::loadConfig( __DIR__ . '/../config/session.php' );
 Session::start();
