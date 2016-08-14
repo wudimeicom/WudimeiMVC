@@ -10,7 +10,7 @@ return [
 						'password' => '123456',
 						'charset' => 'utf8',
 						'collation' => 'utf8_unicode_ci',
-						'prefix' => '',
+						'prefix' => 'w_',
 						'sql_error_display_method' => 'output',
 				] 
 		] 

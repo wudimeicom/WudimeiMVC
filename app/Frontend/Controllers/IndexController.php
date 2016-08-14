@@ -1,5 +1,5 @@
 <?php 
-namespace App\Controllers;
+namespace App\Frontend\Controllers;
 use View;
 
 class IndexController{
@@ -9,7 +9,7 @@ class IndexController{
 		//echo "hello,world";
 		$vars = [];
 		
-		echo View::make("default.index",$vars);
+		echo View::make("frontend.index",$vars);
 	}
 	
 }

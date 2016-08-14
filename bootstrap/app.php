@@ -20,6 +20,8 @@ Session::start();
 
 DB::loadConfig(__DIR__ . "/../config/database.php");
 
+Auth::loadConfig( __DIR__ . '/../config/auth.php' );
+
 View::loadConfig( __DIR__ . '/../config/view.php' );
 
 Router::handle(  __DIR__ . '/../app/routes.php');
