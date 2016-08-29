@@ -4,11 +4,27 @@ use View;
 use Request;
 use Auth;
 use Redirect;
+use Session;
+use Lang;
+use Validator;
+
 class UserController{
 	
+	public function __construct(){
+		Lang::load("user");
+	}
 	public function login(){
 		
 		$vars = [];
+		$vars['message'] = Session::get('message'); 
+		$vars['validator_errors'] =Session::get('validator_errors') ;
+		 
+		echo View::make("frontend.login",$vars);
+	}
+	
+	public function loginSubmit(){
+		$vars = [];
+		 
 		if( Request::isPost() ){
 			$login = Request::post('login');
 			$password = Request::post('password');
@@ -16,22 +32,29 @@ class UserController{
 			if( isset( $remember_me)){
 				$remember_me = true;
 			}
-			
-			//Auth::logout();
-			if( \Auth::attempt(['username'=> $login,'password'=> $password], $remember_me ) ){
-				
+			$rules = [
+				'login' => 'required',
+				'password' => 'required'
+			];
+			if( Validator::validate($_POST,$rules) == false ){
+				Session::flash( 'validator_errors' ,Validator::getErrors() );
+				Redirect::to("/login");
+			}
+			if(   \Auth::attempt(['username'=> $login,'password'=> $password], $remember_me ) ){
+		
 			}
 			else{
-				\Auth::attempt(['email'=> $login,'password'=> $password], $remember_me );
+				 \Auth::attempt(['email'=> $login,'password'=> $password], $remember_me );
 			}
 			if( Auth::check() ){
 				Redirect::to("/");
 			}
 			else{
-				
+				Session::flash('message', Lang::get('user.wrong_username_or_password') );
+				Redirect::to("/login");
 			}
+				
 		}
-		echo View::make("frontend.login",$vars);
 	}
 	
 	public function logout(){

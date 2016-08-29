@@ -20,6 +20,9 @@ Session::start();
 
 DB::loadConfig(__DIR__ . "/../config/database.php");
 
+Lang::loadConfig( __DIR__ . "/../config/lang.php");
+//Lang::setLocale('zh-cn');
+
 Auth::loadConfig( __DIR__ . '/../config/auth.php' );
 
 View::loadConfig( __DIR__ . '/../config/view.php' );
