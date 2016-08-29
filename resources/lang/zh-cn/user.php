@@ -9,4 +9,12 @@ return [
 		'remember_me_7_days' => '记住登录一周',
 		'sign_in' => '登录',
 		
+		'register' => '注册',
+		'username_label' => '用户名',
+		'username' => '用户名',
+		'email_label' => '电子邮箱',
+		'email' => '电子邮箱',
+		'password_confirmation_label' => '再次输入',
+		'password_confirmation' => '确认密码',
+		'accept_aggrement' => '我接受条款'
 ];

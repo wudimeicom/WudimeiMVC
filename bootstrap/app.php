@@ -22,6 +22,7 @@ DB::loadConfig(__DIR__ . "/../config/database.php");
 
 Lang::loadConfig( __DIR__ . "/../config/lang.php");
 //Lang::setLocale('zh-cn');
+Lang::load('global');
 
 Auth::loadConfig( __DIR__ . '/../config/auth.php' );
 

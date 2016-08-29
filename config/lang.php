@@ -1,5 +1,5 @@
 <?php
 return [
-	'locale' => 'en', //'zh-cn' ,
+	'locale' =>'zh-cn' , // 'en', //
 	'path' => __DIR__ . "/../resources/lang"
 ];
