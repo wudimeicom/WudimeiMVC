@@ -1,19 +1,19 @@
 <?php
-if( file_exists( 'D:/www/wudimei/library/Wudimei/autoload.php' )){
-	
-	require_once 'D:/www/wudimei/library/Wudimei/autoload.php';
+$autoload_files = [
+		__DIR__ .'/../vendor/autoload.php',
+		__DIR__ .'/../vendor/Wudimei/autoload.php',
+		'D:/www/wudimei/library/Wudimei/autoload.php'
+];
+foreach ( $autoload_files as $file ){
+	if( file_exists( $file)){
+		require_once $file;
+		break;
+	}
 }
-else{
-	require_once  __DIR__ .'/../vendor/Wudimei/autoload.php';
-}
+
 require_once  __DIR__ .'/autoload.php';
 
- 
-
-use Wudimei\ClassAlias;
- 
-
-ClassAlias::withStaticProxies(); //create StaticProxies alias,eg Session,DB,and so on
+\Wudimei\ClassAlias::loadConfig(__DIR__."/../config/class_alias.php");
 
 Session::loadConfig( __DIR__ . '/../config/session.php' );
 Session::start();
@@ -21,8 +21,6 @@ Session::start();
 DB::loadConfig(__DIR__ . "/../config/database.php");
 
 Lang::loadConfig( __DIR__ . "/../config/lang.php");
-//Lang::setLocale('zh-cn');
-Lang::load('global');
 
 Auth::loadConfig( __DIR__ . '/../config/auth.php' );
 

@@ -12,7 +12,6 @@ use App\Frontend\Models\User;
 class UserController{
 	
 	public function __construct(){
-		Lang::load("user");
 		Validator::prepareFieldLabels('user'); //prepareFieldLabels from lang group name
 	}
 	
@@ -94,4 +93,6 @@ class UserController{
 		}
 		echo View::make("frontend.register",$vars);
 	}
+	
+	
 }
