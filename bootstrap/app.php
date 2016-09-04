@@ -1,8 +1,9 @@
 <?php
 $autoload_files = [
+		'D:/www/wudimei/library/Wudimei/autoload.php',
 		__DIR__ .'/../vendor/autoload.php',
 		__DIR__ .'/../vendor/Wudimei/autoload.php',
-		'D:/www/wudimei/library/Wudimei/autoload.php'
+		
 ];
 foreach ( $autoload_files as $file ){
 	if( file_exists( $file)){
@@ -25,5 +26,7 @@ Lang::loadConfig( __DIR__ . "/../config/lang.php");
 Auth::loadConfig( __DIR__ . '/../config/auth.php' );
 
 View::loadConfig( __DIR__ . '/../config/view.php' );
+
+Mail::loadConfig( __DIR__ . '/../config/mail.php'  );
 
 Router::handle(  __DIR__ . '/../app/routes.php');

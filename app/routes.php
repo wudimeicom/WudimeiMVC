@@ -14,6 +14,10 @@ $route['/login'] = ['GET' => '\\App\\Frontend\\Controllers\\UserController@login
 $route['/logout'] = '\\App\\Frontend\\Controllers\\UserController@logout';
 $route['/register'] = '\\App\\Frontend\\Controllers\\UserController@register';
 
+
+$backendPrefix = '/backend_2016';
+$route[$backendPrefix.'/setting'] = '\\App\\Backend\\Controllers\\SettingController@index';
+
 $route['404_override'] = '';
 $route['default'] = 'App\\Frontend\\Controllers\\IndexController'; // 'IndexController@welcome';
 

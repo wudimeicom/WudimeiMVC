@@ -1,0 +1,15 @@
+@{
+$setting = new Wudimei\Setting();
+
+}
+
+
+<!-- @foreach( $settings as $s) -->
+
+  {{$s->label}} :
+  {! $setting->buildControl( $s ) !}
+  <br />
+  
+
+
+<!-- @endforeach -->

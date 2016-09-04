@@ -3,3 +3,5 @@ storage/sessions/
 .settings/
 .project
 storage/views_c/
+vendor/
+composer.lock

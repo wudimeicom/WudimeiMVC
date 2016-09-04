@@ -8,6 +8,7 @@ use Session;
 use Lang;
 use Validator;
 use App\Frontend\Models\User;
+use Mail;
 
 class UserController{
 	
@@ -16,6 +17,8 @@ class UserController{
 	}
 	
 	public function login(){
+		
+		//Mail::to("yaqy@qq.com")->subject("h是你")->content("a张三")->send();
 		
 		$vars = [];
 		$vars['message'] = Session::get('message'); 
