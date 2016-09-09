@@ -1,5 +1,5 @@
 <?php 
-namespace App\Frontend\Controllers;
+namespace App\Frontend;
 use View;
 
 class IndexController{

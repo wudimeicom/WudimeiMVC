@@ -1,14 +1,7 @@
 <?php
 return array(
-		//'driver' => 'eloquent',
-		'model' => 'App\\Frontend\\Models\\User',
+		'model' => 'App\\Models\\User',
 		'table' => 'w_users',
-		/*
-		'reminder' => array(
-				'email' => 'emails.auth.reminder',
-				'table' => 'password_reminders',
-				'expire' => 60,
-		),*/
 		/**
 		 * token name in cookie
 		 */

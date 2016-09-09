@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Backend\Models;
+namespace App\Models;
 
-class SettingGroup extends \Wudimei\DB\Model{
+class SettingGroupModel extends \Wudimei\DB\Model{
 	public $table = "setting_groups";
 	public $connection = "default";
 	

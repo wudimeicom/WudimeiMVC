@@ -12,4 +12,5 @@ return [
 		'Validator'  => "Wudimei\\StaticProxies\\Validator",
 		'XSS' => "Wudimei\\StaticProxies\\XSS",
 		'Mail' => "Wudimei\\StaticProxies\\Mail",
+		'Setting' => "Wudimei\\StaticProxies\\Setting",
 ];

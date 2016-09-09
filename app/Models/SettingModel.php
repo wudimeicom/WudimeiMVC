@@ -1,7 +1,7 @@
 <?php
-namespace App\Backend\Models;
+namespace App\Models;
 
-class Setting extends \Wudimei\DB\Model{
+class SettingModel extends \Wudimei\DB\Model{
 	public $table = "settings";
 	public $connection = "default";
 

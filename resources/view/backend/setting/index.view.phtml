@@ -3,13 +3,19 @@ $setting = new Wudimei\Setting();
 
 }
 
+<form method="post">
 
 <!-- @foreach( $settings as $s) -->
 
-  {{$s->label}} :
+  {{ \Lang::get($s->label) }} :
   {! $setting->buildControl( $s ) !}
+  
+  {{ \Lang::get($s->tip) }}
   <br />
   
 
 
 <!-- @endforeach -->
+<input type="submit" name="__submit_save_setting" />
+
+</form>

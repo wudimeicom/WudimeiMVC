@@ -21,6 +21,8 @@ Session::start();
 
 DB::loadConfig(__DIR__ . "/../config/database.php");
 
+Cache::loadConfig(__DIR__.'/../config/cache.php');
+
 Lang::loadConfig( __DIR__ . "/../config/lang.php");
 
 Auth::loadConfig( __DIR__ . '/../config/auth.php' );
@@ -28,5 +30,7 @@ Auth::loadConfig( __DIR__ . '/../config/auth.php' );
 View::loadConfig( __DIR__ . '/../config/view.php' );
 
 Mail::loadConfig( __DIR__ . '/../config/mail.php'  );
+
+Setting::loadConfig( __DIR__ . '/../config/setting.php' );
 
 Router::handle(  __DIR__ . '/../app/routes.php');
