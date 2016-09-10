@@ -18,13 +18,14 @@ class SettingController{
 				if( is_array( $value)){
 					$value = implode(",", $value);
 				}
+				$value = strip_tags( $value );
 				SettingModel::where("id", $id)->update(['value'=> $value]);
 			}
 			Setting::storeToFile();
 		}
 		$settings = SettingModel::all();
 		//print_r( $settings );
-		//echo Setting::item('SITE.NAME');
+		//echo Setting::get('SITE.NAME');
 		/*
 		$item = [
 			'name' => 'admin.email' ,

@@ -12,5 +12,9 @@ http://wudimei.com
 #installation 2
 php composer.phar install
 
+# documentaion
+
+http://php.wudimei.com/doc/cn/201609/index.md.html
+
 
 
