@@ -1,8 +1,8 @@
 <?php return array (
-  'SITE.NAME' => '深圳市无敌美电子商务商行233',
-  'SITE.ADDRESS' => '广东省深圳市222',
+  'SITE.NAME' => '深圳市无敌美电子商务商行',
+  'SITE.ADDRESS' => '广东省深圳市3dd',
   'SITE.ZIPCODE' => '518100',
-  'SEO.KEYWORDS' => '关键字1,关键字222',
+  'SEO.KEYWORDS' => '关键字1,关键字',
   'SITE.CELLPHONE' => '13714715608',
   'SITE.FAX' => '075500000000',
   'SITE.CONTACTMAN' => '杨庆荣',
@@ -12,7 +12,7 @@
   'SITE.QQ' => '290359552,杨庆荣
 214341,张',
   'MAIL.TYPE' => 'mail',
-  'MAIL.SMTP_SSL' => 'no',
+  'MAIL.SMTP_SSL' => 'yes',
   'MAIL.SMTP_HOST' => 'smtp.gmail.com',
   'MAIL.SMTP_PORT' => '465',
   'MAIL.SMTP_USERNAME' => 'fsdaf',
@@ -26,7 +26,7 @@
   'ORDER.ENABLE_NOTIFYING_ADMIN' => 'no',
   'ORDER.EMAILS_FOR_NOTIFICATION' => 'yaqy@qq.com,290359552@qq.com',
   'admin.email' => '****@wudimei.com',
-  'hobbies3' => 'ridding',
+  'hobbies3' => 'drink',
   'hobbies' => 'eat,drink,ridding',
-  'hobbies4' => 'drink,ridding',
+  'hobbies4' => 'eat,drink',
 ); ?>

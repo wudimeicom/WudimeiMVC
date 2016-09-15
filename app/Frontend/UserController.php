@@ -7,7 +7,7 @@ use Redirect;
 use Session;
 use Lang;
 use Validator;
-use App\Frontend\Models\User;
+use App\Models\User;
 use Mail;
 
 class UserController{

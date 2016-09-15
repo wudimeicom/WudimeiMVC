@@ -15,6 +15,7 @@ foreach ( $autoload_files as $file ){
 require_once  __DIR__ .'/autoload.php';
 
 \Wudimei\ClassAlias::loadConfig(__DIR__."/../config/class_alias.php");
+Config::setDir( __DIR__ . "/../config");
 
 Session::loadConfig( __DIR__ . '/../config/session.php' );
 Session::start();

@@ -1,5 +1,6 @@
 <?php
 return [
+		'Config' => "Wudimei\\StaticProxies\\Config",
 		'DB' => "Wudimei\\StaticProxies\\DB",
 		'Cache'  => "Wudimei\\StaticProxies\\Cache",
 		'Session' => "Wudimei\\StaticProxies\\Session",
