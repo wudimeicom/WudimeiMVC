@@ -18,7 +18,7 @@ class UserController{
 	
 	public function login(){
 		
-		//Mail::to("yaqy@qq.com")->subject("h是你")->content("a张三")->send();
+		// Mail::to("yaqy@qq.com")->subject("h是你")->content("a张三")->send();
 		
 		$vars = [];
 		$vars['message'] = Session::get('message'); 
