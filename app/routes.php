@@ -43,8 +43,9 @@ Route::group(['prefix' => '/','namespace' => 'App\\Frontend'],function(){
 	Route::get('logout','UserController@logout');
 });
 
-	
-	
+Route::get('/article/(:num).html','App\Frontend\ArticleController@show');
+Route::get('/article/(:any)/(:num).html','App\Frontend\ArticleController@category');
+Route::get('/regex/([a-z]+)/([0-9]+).html','App\Frontend\ArticleController@regex');
 $r = Route::getRoutes();
 return $r;
 
