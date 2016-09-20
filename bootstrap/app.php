@@ -22,4 +22,5 @@ Session::start();
  
 
 
-Router::run();
+
+Router::handle();

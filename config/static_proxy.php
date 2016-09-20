@@ -11,28 +11,28 @@ return [
 				'class' => "Wudimei\\StaticProxies\\DB",
 				'init_method' => 'loadConfig',
 				'args' => [ 
-						__DIR__ . "/../config/database.php"
+						__DIR__ . "/database.php"
 				] 
 		],
 		'Cache' => [ 
 				'class' => "Wudimei\\StaticProxies\\Cache",
 				'init_method' => 'loadConfig',
 				'args' => [ 
-						__DIR__.'/../config/cache.php'
+						__DIR__.'/cache.php'
 				] 
 		],
 		'Session' => [ 
 				'class' => "Wudimei\\StaticProxies\\Session",
 				'init_method' => 'loadConfig',
 				'args' => [ 
-						__DIR__ . '/../config/session.php'
+						__DIR__ . '/session.php'
 				] 
 		],
 		'View' => [ 
 				'class' => "Wudimei\\StaticProxies\\View",
 				'init_method' => 'loadConfig',
 				'args' => [ 
-						__DIR__ . '/../config/view.php'
+						__DIR__ . '/view.php'
 				] 
 		],
 		
@@ -40,14 +40,14 @@ return [
 				'class' => "Wudimei\\StaticProxies\\Lang",
 				'init_method' => 'loadConfig',
 				'args' => [ 
-						__DIR__ . "/../config/lang.php"
+						__DIR__ . "/lang.php"
 				] 
 		],
 		'Auth' => [ 
 				'class' => "Wudimei\\StaticProxies\\Auth",
 				'init_method' => 'loadConfig',
 				'args' => [ 
-						__DIR__ . '/../config/auth.php'
+						__DIR__ . '/auth.php'
 				] 
 		],
 		'Request' => [ 
@@ -66,19 +66,22 @@ return [
 				'class' => "Wudimei\\StaticProxies\\Mail",
 				'init_method' => 'loadConfig',
 				'args' => [
-						__DIR__ . '/../config/mail.php'
+						__DIR__ . '/mail.php'
 				]
 		],
 		'Setting' => [ 
 				'class' => "Wudimei\\StaticProxies\\Setting",
 				'init_method' => 'loadConfig',
 				'args' => [ 
-						__DIR__ . '/../config/setting.php'
+						__DIR__ . '/setting.php'
 				] 
+		],
+		'Route' => [
+				'class' => "Wudimei\\StaticProxies\\Route"
 		],
 		'Router' => [ 
 				'class' => "Wudimei\\StaticProxies\\Router",
-				'init_method' => 'handle',
+				'init_method' => 'loadConfig',
 				'args' => [ 
 						__DIR__ . '/../app/routes.php'
 				] 
