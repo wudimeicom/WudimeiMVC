@@ -17,6 +17,10 @@ return [
 		'email' => 'email',
 		'password_confirmation_label' => 'retype',
 		'password_confirmation' => 'password confirmation',
-		'accept_aggrement' => 'i have read and accept the aggrement'
-		  
+		'accept_aggrement' => 'i have read and accept the aggrement',
+		'Users' => 'Users',
+		'User List' => 'User List',
+		'User ID' => 'User ID',
+		'Username' => 'Username',
+		
 ];

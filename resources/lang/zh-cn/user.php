@@ -16,5 +16,10 @@ return [
 		'email' => '电子邮箱',
 		'password_confirmation_label' => '再次输入',
 		'password_confirmation' => '确认密码',
-		'accept_aggrement' => '我接受条款'
+		'accept_aggrement' => '我接受条款',
+		'Users' => '用户',
+		'User List' => '用户列表',
+		'User ID' => '用户编号',
+		'Username' => '用户名',
+		
 ];

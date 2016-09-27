@@ -1,7 +1,7 @@
 <?php
 return [
-		'Yes' => 'Yes2',
-		'No' => 'No2',
+		'Yes' => 'Yes',
+		'No' => 'No',
 		'ridding' => 'ridding',
 		'setting' => 'Setting',
 		'setting_desc' => 'setting for website'
