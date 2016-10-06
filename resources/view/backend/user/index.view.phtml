@@ -19,7 +19,7 @@
         	 <form class="form-inline" method="get">
         	    <div class="form-group">
 			    <label class="sr-only" for="keywords">@trans('global.keywords')</label>
-			    <input type="text" class="form-control"  id="keywords" name="keywords"  placeholder="">
+			    <input type="text" class="form-control"  id="keywords" name="keywords"  value="{{Request::get('keywords')}}" placeholder="">
 			  </div>
 			  <div class="form-group">
 			  	 {[ html_select options=$groups value_key='id' output_key='group_name' name="group_id" 
@@ -44,7 +44,8 @@
         	   		<td>{{$user->email}}</td>
         	   		<td>{{$user->created_at}}</td>
         	   		<td>
-        	   			<a href="">@trans('global.delete')</a>
+        	   			<a href="{{url_b('/users/edit?id=')}}{{$user->id}}"   >@trans('global.Edit')</a>
+        	   			<a href="{{url_b('/users/delete?id=')}}{{$user->id}}"  onclick="return confirm('@trans('global.delete_confirm')')">@trans('global.Delete')</a>
         	   		</td>
         	   </tr>
         	   @foreachelse

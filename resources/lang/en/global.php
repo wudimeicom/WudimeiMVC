@@ -10,5 +10,8 @@ return [
 	'please_select' => 'Please Select',
 	'no result available', 'no result available',
 	'actions' => 'Actions',
-	'delete' => 'Delete',
+	'Delete' => 'Delete',
+	'delete_confirm' => 'Do you really want to delete it?',
+	'Edit' => 'Edit',
+	'notice' => 'Notice'
 ];

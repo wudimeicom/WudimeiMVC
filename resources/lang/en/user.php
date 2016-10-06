@@ -22,5 +22,20 @@ return [
 		'User List' => 'User List',
 		'User ID' => 'User ID',
 		'Username' => 'Username',
+		'editUser' => 'Edit User',
+		'addUser' => 'Add User',
+		'editUser_desc' => 'Edit User',
+		'addUser_desc' => 'Add User',
 		
+		'reset_password' => 'Reset Password',
+		'send_email' => 'Send Email',
+		'username_or_email_you_entered_does_no_exists' => 'Username or email you entered does no exists!',
+		'reset_password_email_title' => 'Thank you for reset your password!',
+		'reset_password_email_content' => 'Hello,{username}!<br />please click the link bellow to reset your password!<br />{url}',
+		"the_password_resetting_email_was_sent_to_you" => "the password resetting email was sent to you!",
+		'invalid_token' => 'Sorry,the link is expired or was used.if you wish,please restart the reset-password.',
+		'please_enter_the_new_password' => 'Please enter the new password',
+		'new_password' => 'new password',
+		'new_password2' => 'new password',
+		'reset_password_success' => 'reset password is successfully,please remember your new password!'
 ];

@@ -3,7 +3,7 @@ return [
 		"wrong_username_or_password" => '用户名或者密码错误！',
 		'login' => '登录',
 		'login_label' => '登录',
-		'email_or_username' => '电子邮件或者密码',
+		'email_or_username' => '电子邮件或者用户名',
 		'password_label' => '密码',
 		'password' => '密码',
 		'remember_me_7_days' => '记住登录一周',
@@ -21,5 +21,22 @@ return [
 		'User List' => '用户列表',
 		'User ID' => '用户编号',
 		'Username' => '用户名',
+		'editUser' => '编辑用户',
+		'addUser' => '添加用户',
+		'editUser_desc' => '编辑用户',
+		'addUser_desc' => '添加用户',
+		
+		'reset_password' => '重置密码',
+		'send_email' => '发送邮件',
+		'username_or_email_you_entered_does_no_exists' => '您输入的用户名或者电子邮件不存在！',
+		'reset_password_email_title' => '感谢您重置密码',
+		'reset_password_email_content' => '{username}，您好！<br />请点击如下链接以便重置您的密码：<br />{url}',
+		"the_password_resetting_email_was_sent_to_you" => "重置密码链接已经发送到您的邮箱!请尽快查收！",
+		'invalid_token' => '对不起，你的链接已经超时或者已经使用过了！您可以重新发起重置密码。',
+		'please_enter_the_new_password' => '请输入新密码',
+		'new_password' => '新密码',
+		'new_password2' => '新密码',
+		'reset_password_success' => '重置密码成功！请务必记住您的新密码。',
+		
 		
 ];

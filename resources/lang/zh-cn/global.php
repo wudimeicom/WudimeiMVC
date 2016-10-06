@@ -10,6 +10,8 @@ return [
 		'please_select' => '请选择',
 		'no result available' => '没有结果',
 		'actions' => '操作',
-		'delete' => '删除',
-		
+		'Delete' => '删除',
+		'delete_confirm' => '您真的要删除吗？',
+		'Edit' => '编辑',
+		'notice' => '提示'
 ];

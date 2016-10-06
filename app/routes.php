@@ -7,6 +7,9 @@ Route::group(['prefix' => Config::get('app.backend_url' ) ,'namespace' => '\\App
 	
 	Route::get('/setting','SettingController@index');
 	Route::get('/users','UserController@index');
+	Route::get('/users/delete','UserController@delete');
+	Route::get('/users/edit','UserController@edit');
+	Route::get('/users/add','UserController@add');
 	/*
 	Route::group(['prefix' => '/articles','domain'=>'www.a.com'],function(){
 		Route::get('/add','IndexController@add');
@@ -18,6 +21,10 @@ Route::group(['prefix' => '/','namespace' => 'App\\Frontend'],function(){
 	Route::post('login','UserController@loginSubmit');
 	Route::any('register','UserController@register');
 	Route::get('logout','UserController@logout');
+	
+	Route::any('password/postEmail','PasswordController@postEmail');
+	Route::any('password/reset','PasswordController@reset');
+	Route::any('password/emailSent','PasswordController@emailSent');
 });
 
 Route::get('/article/(:num).html','App\Frontend\ArticleController@show');
