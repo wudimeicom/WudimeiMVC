@@ -27,6 +27,10 @@ return [
 		'editUser_desc' => 'Edit User',
 		'addUser_desc' => 'Add User',
 		
+		'old_password' => 'Old Password',
+		'confirm_password_change' => 'Confirm Password Change',
+		'password_changed' => 'Password changed!Please remember your new password!',
+		'wrong_old_password' => 'Wrong Old Password!',
 		'reset_password' => 'Reset Password',
 		'send_email' => 'Send Email',
 		'username_or_email_you_entered_does_no_exists' => 'Username or email you entered does no exists!',

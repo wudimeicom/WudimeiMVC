@@ -13,5 +13,11 @@ return [
 	'Delete' => 'Delete',
 	'delete_confirm' => 'Do you really want to delete it?',
 	'Edit' => 'Edit',
-	'notice' => 'Notice'
+	'notice' => 'Notice',
+		
+	'login' => 'Login',
+	'logout' => 'Logout',
+	'register' => 'Register',
+	'changePassword' => 'Change Password',
+	'Online' => 'Online'
 ];

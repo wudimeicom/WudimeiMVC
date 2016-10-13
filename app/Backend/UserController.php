@@ -2,7 +2,7 @@
 namespace App\Backend;
 use App\Models\User;
  
-
+use Menu;
 use View; 
 use App\Models\UserGroupModel;
 use Redirect;
@@ -28,6 +28,7 @@ class UserController{
 		 $vars['pgUser'] = $pgUser = $user->paginate(10,$page );
 		 $vars['groups'] = UserGroupModel::all();
 		 
+		 Menu::active('user,userList');
 		echo View::make("backend.user.index",$vars);
 	}
 	

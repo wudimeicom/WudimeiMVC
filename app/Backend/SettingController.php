@@ -8,6 +8,7 @@ use Request;
 use Setting;
 use App\Models\SettingGroupModel;
 use Wudimei\ArrayHelper;
+use Menu;
 
 class SettingController{
 	public function index(){
@@ -47,7 +48,7 @@ class SettingController{
 			'setting_group_id' => 3
 		];
 		SettingModel::insert( $item ); */
-		 
+		Menu::active('setting');
 		$vars = ['settings' => $settings , 'setting_groups' => $setting_groups ,'grouped_settings' => $grouped_settings ,'group_id' => $group_id ];
 		echo View::make("backend.setting.index",$vars);
 	}

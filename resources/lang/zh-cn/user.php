@@ -26,6 +26,10 @@ return [
 		'editUser_desc' => '编辑用户',
 		'addUser_desc' => '添加用户',
 		
+		'old_password' => '旧密码',
+		'confirm_password_change' => '确认密码修改',
+		'password_changed' => '密码修改成功，请牢记您的新密码。',
+		'wrong_old_password' => '旧密码错误！',
 		'reset_password' => '重置密码',
 		'send_email' => '发送邮件',
 		'username_or_email_you_entered_does_no_exists' => '您输入的用户名或者电子邮件不存在！',

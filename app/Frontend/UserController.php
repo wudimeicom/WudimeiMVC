@@ -38,7 +38,7 @@ class UserController{
 		}
 		
 		$rules = [
-			'login' => 'required; minlength:3;alpha_num_dash;',
+			'login' => 'required; minlength:3;',
 			'password' => 'required; minlength:6'
 		];
 		
@@ -97,5 +97,40 @@ class UserController{
 		echo View::make("frontend.register",$vars);
 	}
 	
+	public function changePassword(){
+		$vars  = ['message' => ''];
+		if( Request::isPost()){
+			if( Validator::validate( Request::all(),[
+					'old_password' => 'required;minlength:6',
+					'new_password' => 'required;minlength:6',
+					'password_confirmation' => 'required;equalTo:new_password',
+			])){
+				$old_password = post("old_password");
+				$new_password = post("new_password");
+				
+				$user = Auth::user();
+				
+				$id = $user->id;
+				$tmpUser = User::find( $id );
+				
+				if(  $tmpUser->password == (new User())->encryptPassword( $old_password) ){
+					$new_pass = (new User())->encryptPassword(  $new_password );
+					//echo $new_pass;
+					User::where('id', $id)->update(['password'=> $new_pass ] );
+					$vars['message'] = Lang::get('user.password_changed');
+					echo View::make('frontend.success', $vars);
+					exit();
+				}
+				else{
+				    Validator::setError(  "old_password",	Lang::get("user.wrong_old_password") );
+					
+				}
+			}
+			 
+		}
+		$vars['validator_errors'] = Validator::getErrors();
+	
+		echo View::make('frontend.user.changePassword', $vars );
+	}
 	
 }

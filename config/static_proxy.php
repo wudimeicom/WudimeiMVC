@@ -86,4 +86,7 @@ return [
 						__DIR__ . '/../app/routes.php'
 				] 
 		],
+		'Menu' => [
+				'class' => "App\\Backend\\Library\\StaticProxies\\Menu"
+		]
 ];

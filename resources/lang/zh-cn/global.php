@@ -13,5 +13,11 @@ return [
 		'Delete' => '删除',
 		'delete_confirm' => '您真的要删除吗？',
 		'Edit' => '编辑',
-		'notice' => '提示'
+		'notice' => '提示',
+		
+		'login' => '登录',
+		'logout' => '退出',
+		'register' => '注册',
+		'changePassword' => '修改密码',
+		'Online' => '在线' ,
 ];
