@@ -10,6 +10,7 @@ return [
 		'sign_in' => '登录',
 		
 		'register' => '注册',
+        'register_success' => '注册成功！',
 		'username_label' => '用户名',
 		'username' => '用户名',
 		'email_label' => '电子邮箱',
@@ -25,7 +26,8 @@ return [
 		'addUser' => '添加用户',
 		'editUser_desc' => '编辑用户',
 		'addUser_desc' => '添加用户',
-		
+        'edit_successfully' => '用户编辑成功' ,
+		'delete_successfully' => '用户删除成功',
 		'old_password' => '旧密码',
 		'confirm_password_change' => '确认密码修改',
 		'password_changed' => '密码修改成功，请牢记您的新密码。',

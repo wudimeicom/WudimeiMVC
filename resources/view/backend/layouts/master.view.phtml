@@ -8,14 +8,22 @@
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>@section('title','Wudimei MVC')</title>
   	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-
-    <link href="/assets/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/assets/libs/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" >
-  
+  	
+  	
+  	<link   rel="stylesheet"     href="/assets/libs/font-awesome/4.5.0/css/font-awesome.min.css"      />
+  	
+  	
+ 	<!-- 
+    <link   rel="stylesheet"     href="/assets/libs/AdminW/1.0.0/css/admin.css"      />
+     -->
+     <link   rel="stylesheet"     href="/assets/libs/bootstrap/3.3.7/css/bootstrap.min.css"     />
+ 
   	<link href="/assets/libs/AdminLTE/2.3.6/css/AdminLTE.min.css" rel="stylesheet" >
  	
  	 <link href="/assets/libs/AdminLTE/2.3.6/css/skins/skin-yellow.min.css" rel="stylesheet" >
  	 
+ 	 
+ 	  
     <!--[if lt IE 9]>
       <script src="/assets/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="/assets/libs/respond/1.4.2/respond.min.js"></script>
@@ -113,7 +121,7 @@
       <ul class="sidebar-menu">
         <li class="header">@trans('backend.MAIN_NAVIGATION')</li>
           
-         @{ $bkMenu = new \App\Backend\Library\BackendMenu();     }  {! $bkMenu->getHtmlMenus()  !}
+         @{ Menu::section('backend_menu');   }  {! Menu::getHtml()  !}
       </ul>
     </section>
   </aside>
@@ -153,7 +161,14 @@
  
 </div>
 
-    <script src="/assets/libs/jquery/2.2.3/jquery.min.js"></script>
+	<script src="/assets/libs/jquery/1.12.4/jquery.min.js"></script>
+  
+    
+   
+    
+    <!-- 
+    <script src="/assets/libs/AdminW/1.0.0/js/app.js"></script>
+      -->
     <script src="/assets/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="/assets/libs/AdminLTE/2.3.6/js/app.js"></script>
 

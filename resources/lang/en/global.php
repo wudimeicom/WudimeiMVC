@@ -19,5 +19,11 @@ return [
 	'logout' => 'Logout',
 	'register' => 'Register',
 	'changePassword' => 'Change Password',
-	'Online' => 'Online'
+	'Online' => 'Online' ,
+
+    'alert_title_success' => 'Success',
+    'alert_title_warning' => 'Warning',
+    'alert_title_info' => 'Info',
+    'alert_title_danger' => 'Danger',
+        
 ];

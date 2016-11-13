@@ -86,9 +86,12 @@ class UserController{
 						'username' => Request::item('username'),
 						'email' => Request::item('email'),
 						'password' => $userModel->encryptPassword( Request::item('password') ),
+				        'created_at' => date("Y-m-d H:i:s")
 				];
 				$userId = $userModel->insert( $row );
-				echo $userId;
+				//echo $userId;
+				echo View::make("frontend.success",['message' => Lang::get('user.register_success')]);
+				exit();
 			}
 			else{
 				$vars['validator_errors'] = Validator::getErrors();

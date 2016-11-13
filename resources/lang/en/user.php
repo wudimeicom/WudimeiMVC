@@ -11,6 +11,7 @@ return [
 		'sign_in' => 'Sign in',
 		
 		'register' => 'register',
+        'register_success' => 'Register are successfully!',
 		'username_label' => 'username',
 		'username' => 'username',
 		'email_label' => 'email',
@@ -26,7 +27,8 @@ return [
 		'addUser' => 'Add User',
 		'editUser_desc' => 'Edit User',
 		'addUser_desc' => 'Add User',
-		
+        'edit_successfully' => 'user save successfully' ,
+        'delete_successfully' => 'user delete successfully' ,
 		'old_password' => 'Old Password',
 		'confirm_password_change' => 'Confirm Password Change',
 		'password_changed' => 'Password changed!Please remember your new password!',

@@ -1,5 +1,8 @@
 <?php
 return [ 
+        'Alert' => [
+                'class' => "Wudimei\\StaticProxies\\Alert"
+        ],
 		'Config' => [ 
 				'class' => "Wudimei\\StaticProxies\\Config",
 				'init_method' => 'setDir',
@@ -87,6 +90,13 @@ return [
 				] 
 		],
 		'Menu' => [
-				'class' => "App\\Backend\\Library\\StaticProxies\\Menu"
+				'class' => "Wudimei\\StaticProxies\\Menu",
+				'init_method' => 'initConfig',
+				'args' => [ 
+						[
+								'backend_menu' => __DIR__ . '/backend_menu.php'
+						]
+						
+				] 
 		]
 ];

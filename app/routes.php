@@ -10,8 +10,11 @@ Route::group(['prefix' => Config::get('app.backend_url' ) ,'namespace' => '\\App
 	Route::get('/users/delete','UserController@delete');
 	Route::get('/users/edit','UserController@edit');
 	Route::get('/users/add','UserController@add');
+	Route::get('/users/modifyPassword','UserController@modifyPassword');
 	
 	Route::get('','IndexController@index');
+	Route::get('/','IndexController@index');
+	
 	/*
 	Route::group(['prefix' => '/articles','domain'=>'www.a.com'],function(){
 		Route::get('/add','IndexController@add');

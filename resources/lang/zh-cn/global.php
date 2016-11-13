@@ -20,4 +20,10 @@ return [
 		'register' => '注册',
 		'changePassword' => '修改密码',
 		'Online' => '在线' ,
+        
+        'alert_title_success' => '成功',
+        'alert_title_warning' => '警告',
+        'alert_title_info' => '消息',
+        'alert_title_danger' => '危险',
+        
 ];
