@@ -1,0 +1,52 @@
+<!-- @extends('backend.layouts.master') -->
+
+<!-- @section('title',"@trans('user.Users')" ) --> 
+<!-- @section('content_header', "@trans('user_group.name')" ) --> 
+<!-- @section('content_header_desc', "" ) --> 
+
+<!-- @section('breadcrumb') -->
+        
+        <li class="active">@trans('user_group.name')</li>
+<!-- @endsection -->
+        
+<!-- @section('content') --> 
+ 
+    {! Alert::display() !}
+	<div class="box">
+		 
+        <div class="box-body">
+         
+            <a href="{{url_b('/user-groups/new')}}"><i class="fa fa-plus"></i> @trans('global.new')</a>
+        	 
+        	 <table class="table">
+        	   <tr>
+        	   		<th>@trans('user.User ID')</th>
+        	   		<th>@trans('user.Username')</th>
+        	   		 
+        	   		<th>@trans('global.actions')</th>
+        	   </tr>
+        	   @foreach( $groups as $g)
+        	   <tr>
+        	   		<td>{{$g->id}}</td>
+        	   		<td>{{$g->group_name}}</td>
+        	   		 
+        	   		<td>
+        	   			<a href="{{url_b('/user-groups/edit?id=')}}{{$g->id}}"   >@trans('global.Edit')</a>
+        	   			<a href="{{url_b('/user-groups/delete?id=')}}{{$g->id}}"  onclick="return confirm('@trans('global.delete_confirm')')">@trans('global.Delete')</a>
+        	   		</td>
+        	   </tr>
+        	   @foreachelse
+        	     <tr>
+        	       <td colspan="5">@trans('global.no result available')</td>
+        	     </tr>
+        	   @endforeach
+        	   </table>
+        	    
+        </div>
+       
+	</div>
+   
+	 
+	 
+
+<!-- @endsection -->

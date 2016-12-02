@@ -22,7 +22,7 @@ class UserController{
 		
 		$vars = [];
 		$vars['message'] = Session::get('message'); 
-		$vars['validator_errors'] =Session::get('validator_errors') ;
+		$vars['validator_errors'] =Session::get('errors') ;
 		 
 		echo View::make("frontend.login",$vars);
 	}
@@ -43,8 +43,7 @@ class UserController{
 		];
 		
 		if( Validator::validate($_POST,$rules) == false ){
-			Session::flash( 'validator_errors' ,Validator::getErrors() );
-			Redirect::to("/login");
+			Redirect::to("/login")->withErrors();
 			exit();
 		}
 		
@@ -61,7 +60,6 @@ class UserController{
 			Session::flash('message', Lang::get('user.wrong_username_or_password') );
 			Redirect::to("/login");
 		}
-		
 	}
 	
 	public function logout(){

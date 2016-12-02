@@ -14,5 +14,8 @@ return [
 	'rangelength' => 'length of {field} should between {min} and {max}.',
 	'alpha_num' => '{field} should be a combination of alphabetic and numeric characters.',
 	'alpha_num_dash' => '{field} should be a combination of alphabetic , numeric characters and dash.',
-	'no_tags' => '{field} does not accept the html tags.'
+	'no_tags' => '{field} does not accept the html tags.',
+    'attributes' => [
+            'email' => 'Email',
+    ]
 ];

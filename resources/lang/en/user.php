@@ -6,6 +6,7 @@ return [
 		'login_label' => 'login',
 		'password_label' => 'Password',
 		'password' => 'Password',
+        'password2' => 'password confirmation',
 		'email_or_username' => 'Email or Username',
 		'remember_me_7_days' => 'Remember me 7 days',
 		'sign_in' => 'Sign in',

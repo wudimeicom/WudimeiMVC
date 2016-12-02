@@ -55,7 +55,7 @@
         	   @endforeach
         	   </table>
         	   
-        	   {! $pgUser->render('?page={page}') !}
+        	   {! $pgUser->render('?page={page}&keywords='.@$_GET['keywords'].'&group_id='.@$_GET['group_id'] ) !}
         </div>
        
 	</div>

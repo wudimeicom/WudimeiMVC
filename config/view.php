@@ -1,8 +1,10 @@
 <?php
  
 return [
-		'path' => __DIR__ . '/../resources/view' ,
-		'compiled'  => __DIR__ . '/../storage/views_c' ,
+		'path' => dirname(__DIR__,1) . '/resources/view' ,
+		'compiled'  => dirname(__DIR__,1) . '/storage/views_c' ,
 		'forceCompile' => false,
-		'skipCommentTags' => true
+		'skipCommentTags' => true,
+        'filename_extension' => '.htm',
+        
 ];

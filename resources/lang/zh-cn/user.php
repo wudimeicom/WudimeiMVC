@@ -6,6 +6,7 @@ return [
 		'email_or_username' => '电子邮件或者用户名',
 		'password_label' => '密码',
 		'password' => '密码',
+        'password2' => '确认密码',
 		'remember_me_7_days' => '记住登录一周',
 		'sign_in' => '登录',
 		

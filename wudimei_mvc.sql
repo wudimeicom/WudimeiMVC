@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 2016-10-06 09:11:30
+-- Generation Time: 2016-12-02 08:57:54
 -- 服务器版本： 10.0.16-MariaDB-log
--- PHP Version: 7.0.0
+-- PHP Version: 7.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -122,44 +122,23 @@ CREATE TABLE `w_settings` (
   `type` varchar(50) NOT NULL DEFAULT 'text',
   `properties` text,
   `setting_group_id` int(5) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `w_settings`
 --
 
 INSERT INTO `w_settings` (`id`, `name`, `value`, `label`, `tip`, `type`, `properties`, `setting_group_id`) VALUES
-(1, 'SITE.NAME', '深圳市无敌美电子商务商行3d', '公司名称', ' ', 'text', '{"default":"","size":50,"class":"form-control"}', 1),
-(2, 'SITE.ADDRESS', '广东省深圳市d', '地址', ' ', 'textarea', '{"class":"form-control"}', 1),
-(4, 'SITE.ZIPCODE', '518100', '邮政编码', ' ', 'text', '{"default":"","class":"form-control"}', 1),
-(8, 'SEO.KEYWORDS', '关键字1,关键字', '关键字:', '用半角逗号隔开', 'textarea', '{"default":"","class":"form-control"}', 2),
-(5, 'SITE.CELLPHONE', '13714715608', '手机', ' ', 'text', '{"default":"","class":"form-control"}', 1),
-(6, 'SITE.FAX', '075500000000', '传真', ' ', 'text', '{"default":"","class":"form-control"}', 1),
-(7, 'SITE.CONTACTMAN', '杨庆荣', '联系人', ' ', 'text', '{"default":"","class":"form-control"}', 1),
-(9, 'SEO.DESCRIPTION', '描述，220个字符以内。22', '描述:', ' ', 'textarea', '{"default":"","class":"form-control"}', 2),
-(10, 'SITE.URL_PREFIX', 'http://wudimeishop.anli.wudimei.com', '网址前缀', ' ', 'text', '{"default":"","class":"form-control"}', 1),
-(11, 'LINKS.IMAGE_SIZE', '80,404', '首页友情链接图片的尺寸', '格式“宽,高”', 'text', '{"default":"","class":"form-control"}', 3),
-(12, 'SITE.QQ', '290359552,杨庆荣\r\n214341,张', '网站首页QQ面板', '格式：“QQ号,昵称”，一行一个。', 'textarea', '{"default":"","class":"form-control"}', 1),
-(13, 'MAIL.TYPE', 'mail', '邮件发送方式', ' ', 'radios', '{"default":"","class":"form-control"}', 4),
-(14, 'MAIL.SMTP_SSL', 'yes', '是否使用ssl', ' ', 'radios', '{\r\n  "default":"no", \r\n  "options": \r\n   [ \r\n     {"value": "yes" ,"text":"setting.Yes"},\r\n     {"value": "no" ,"text":"setting.No"} \r\n   ] ,\r\n   "class":"radios"\r\n}', 4),
-(15, 'MAIL.SMTP_HOST', 'smtp.gmail.com', 'SMTP主机名或IP', ' ', 'text', '{"default":"","class":"form-control"}', 4),
-(16, 'MAIL.SMTP_PORT', '465', 'SMTP主机端口', '一般是25,ssl的是465...', 'text', '{"default":"","class":"form-control"}', 4),
-(17, 'MAIL.SMTP_USERNAME', 'fsdaf', 'SMTP用户名', '有的要求要加上@***.com的后缀', 'text', '{"default":"","class":"form-control"}', 4),
-(18, 'MAIL.SMTP_PASSWORD', 'f', 'SMTP密码', ' ', 'password', '{"default":"","class":"form-control"}', 4),
-(19, 'MAIL.SMTP_FROM', '', 'SMTP发件人邮箱', '一般要和用户名相同', 'text', '{"default":"","class":"form-control"}', 4),
-(20, 'MAIL.SMTP_DEBUG', 'no', 'SMTP调试', '开发环境时可开启，部署后建议关闭', 'radios', '{"default":"","class":"form-control"}', 4),
-(23, 'GUESTBOOK.REJECT_BAD_WORDS', 'yes', '拒绝接受包含敏感词的留言', '关闭则什么都可以提交', 'radios', '{"default":"","class":"form-control"}', 5),
-(21, 'GUESTBOOK.ENABLE_EMAIL_NOTIFICATION', 'yes', '收到留言自动邮件通知', ' ', 'radios', '{"default":"","class":"form-control"}', 5),
-(22, 'FILTER.BAD_WORDS', '法轮功,法轮大法,色情,赌博,六合彩', '敏感词关键字', '用半角逗号“,”隔开', 'textarea', '{"default":"","class":"form-control"}', 6),
-(24, 'GUESTBOOK.RECEIVER_EMAIL', 'yaqy@qq.com', '留言提醒的接收邮箱', ' ', 'text', '{"default":"","class":"form-control"}', 5),
-(25, 'ORDER.ENABLE_NOTIFYING_ADMIN', 'no', '有订单通知员工', ' ', 'radios', '{"default":"" }', 7),
-(26, 'ORDER.EMAILS_FOR_NOTIFICATION', 'yaqy@qq.com,290359552@qq.com', '管理员的电子邮件', '多个请用半角逗号“,”隔开', 'textarea', '{"default":"","class":"form-control"}', 7),
-(30, 'admin.email', '****@wudimei.com', 'Administrator\'s email', 'please enter an email address', 'text', '{"default":"","size":50,"class":"form-control"}', 3),
-(27, 'hobbies3', 'drink', '爱好', '爱好', 'select', '{\r\n  "default": ["eat","drink"],\r\n  "options" :[\r\n   {"value" : "eat", "text":"eat Food"},\r\n   {"value": "drink", "text": "drunk"},\r\n   {"value": "ridding", "text": "setting.ridding"} \r\n  ],\r\n  "class":"form-control"\r\n}', 0),
-(28, 'hobbies', 'eat,drink,ridding', '爱好', '爱好', 'checkboxes', '{\r\n  "default": ["eat","drink"],\r\n  "options" :[\r\n   {"value" : "eat", "text":"eat Food"},\r\n   {"value": "drink", "text": "drunk"},\r\n   {"value": "ridding", "text": "setting.ridding"} \r\n  ]\r\n}', 0),
-(29, 'hobbies4', 'eat,drink', '爱好', '爱好', 'select', '{\r\n  "default": ["eat","drink"],\r\n  "multiple":"multiple",\r\n  "options" :[\r\n   {"value" : "eat", "text":"eat Food"},\r\n   {"value": "drink", "text": "drunk"},\r\n   {"value": "ridding", "text": "setting.ridding"} \r\n  ],\r\n  "class":"form-control"\r\n}', 0),
-(31, 'admin.email', '****@wudimei.com3', 'Administrator\'s email', 'please enter an email address', 'text', '{"default":"","size":50,"class":"form-control"}', 3),
-(32, 'admin.email', '****@wudimei.com', 'Administrator\'s email', 'please enter an email address', 'text', '{"default":"","size":50,"class":"form-control"}', 3);
+(1, 'SITE.NAME', '深圳市无敌美电子商务商行', 'setting.site_name', ' ', 'text', '{"default":"","size":50,"class":"form-control"}', 1),
+(2, 'SITE.ADDRESS', '广东省深圳市', 'setting.address', ' ', 'textarea', '{"class":"form-control"}', 1),
+(4, 'SITE.ZIPCODE', '518100', 'setting.zip_code', ' ', 'text', '{"default":"","class":"form-control"}', 1),
+(5, 'SITE.CELLPHONE', '13714715608', 'setting.cellphone', ' ', 'text', '{"default":"","class":"form-control"}', 1),
+(6, 'SITE.FAX', '075500000000', 'setting.fax', ' ', 'text', '{"default":"","class":"form-control"}', 1),
+(7, 'SITE.CONTACTMAN', '杨庆荣', 'setting.contact_man', ' ', 'text', '{"default":"","class":"form-control"}', 1),
+(8, 'SEO.KEYWORDS', '关键字1,关键字', 'setting.keywords', '用半角逗号隔开', 'textarea', '{"default":"","class":"form-control"}', 2),
+(9, 'SEO.DESCRIPTION', '描述，220个字符以内。22', 'setting.description', ' ', 'textarea', '{"default":"","class":"form-control"}', 2),
+(10, 'SITE.URL_PREFIX', 'http://wudimeishop.anli.wudimei.com', 'url_prefix', ' ', 'text', '{"default":"","class":"form-control"}', 1),
+(12, 'SITE.QQ', '290359552,杨庆荣\r\n214341,张', 'qq_numbers', '格式：“QQ号,昵称”，一行一个。', 'textarea', '{"default":"","class":"form-control"}', 1);
 
 -- --------------------------------------------------------
 
@@ -177,17 +156,8 @@ CREATE TABLE `w_setting_groups` (
 --
 
 INSERT INTO `w_setting_groups` (`id`, `group_name`) VALUES
-(1, 'user'),
-(2, 'user'),
-(3, 'user'),
-(4, 'user'),
-(5, 'user'),
-(6, 'user'),
-(7, 'user'),
-(8, 'user'),
-(9, 'user'),
-(10, 'user'),
-(11, 'user');
+(1, 'setting.groupname_website'),
+(2, 'setting.groupname_SEO');
 
 -- --------------------------------------------------------
 
@@ -200,19 +170,39 @@ CREATE TABLE `w_users` (
   `username` varchar(30) DEFAULT ' ',
   `email` varchar(50) DEFAULT ' ',
   `password` varchar(60) DEFAULT ' ',
-  `user_group_id` int(4) NOT NULL DEFAULT '1',
   `created_at` datetime NOT NULL,
   `remember_token` varchar(62) NOT NULL DEFAULT ' ',
-  `status` tinyint(3) NOT NULL DEFAULT '0' COMMENT '0inactive1active2band'
+  `status` tinyint(3) NOT NULL DEFAULT '0' COMMENT '0inactive1active2baned'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `w_users`
 --
 
-INSERT INTO `w_users` (`id`, `username`, `email`, `password`, `user_group_id`, `created_at`, `remember_token`, `status`) VALUES
-(4, 'yqr2', 'yqr2@wudimei.com', 'e10adc3949ba59abbe56e057f20f883e', 1, '0000-00-00 00:00:00', 'd3545fb4ee1850deeff82d53ddc21961', 0),
-(5, 'yqr3', 'yaqy@qq.com', 'e99a18c428cb38d5f260853678922e03', 1, '0000-00-00 00:00:00', 'a34cfcd2bc3051cd6138cd2c4c3e8758', 0);
+INSERT INTO `w_users` (`id`, `username`, `email`, `password`, `created_at`, `remember_token`, `status`) VALUES
+(4, 'yqr2', 'yqr2223@wudimei.com', 'e10adc3949ba59abbe56e057f20f883e', '0000-00-00 00:00:00', 'eb4a52acdbe11d35675531451a9a3fb3', 0),
+(5, 'yqr3', 'yaqy@qq.com', 'e80b5017098950fc58aad83c8c14978e', '0000-00-00 00:00:00', 'fa06fcbcc6aed5ed9153b62f471788a6', 0);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `w_users_groups`
+--
+
+CREATE TABLE `w_users_groups` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `user_group_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `w_users_groups`
+--
+
+INSERT INTO `w_users_groups` (`id`, `user_id`, `user_group_id`) VALUES
+(6, 4, 2),
+(7, 4, 1),
+(8, 5, 3);
 
 -- --------------------------------------------------------
 
@@ -231,7 +221,8 @@ CREATE TABLE `w_user_groups` (
 
 INSERT INTO `w_user_groups` (`id`, `group_name`) VALUES
 (1, 'user'),
-(2, 'admin');
+(2, 'admin'),
+(3, 'test');
 
 -- --------------------------------------------------------
 
@@ -280,6 +271,12 @@ ALTER TABLE `w_users`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `w_users_groups`
+--
+ALTER TABLE `w_users_groups`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `w_user_groups`
 --
 ALTER TABLE `w_user_groups`
@@ -299,7 +296,7 @@ ALTER TABLE `w_user_group_permissions`
 -- 使用表AUTO_INCREMENT `w_password_resets`
 --
 ALTER TABLE `w_password_resets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- 使用表AUTO_INCREMENT `w_permissions`
 --
@@ -309,22 +306,27 @@ ALTER TABLE `w_permissions`
 -- 使用表AUTO_INCREMENT `w_settings`
 --
 ALTER TABLE `w_settings`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- 使用表AUTO_INCREMENT `w_setting_groups`
 --
 ALTER TABLE `w_setting_groups`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- 使用表AUTO_INCREMENT `w_users`
 --
 ALTER TABLE `w_users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
+-- 使用表AUTO_INCREMENT `w_users_groups`
+--
+ALTER TABLE `w_users_groups`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
 -- 使用表AUTO_INCREMENT `w_user_groups`
 --
 ALTER TABLE `w_user_groups`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- 使用表AUTO_INCREMENT `w_user_group_permissions`
 --

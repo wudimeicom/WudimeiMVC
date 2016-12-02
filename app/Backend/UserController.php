@@ -1,18 +1,20 @@
 <?php
 namespace App\Backend;
 use App\Models\User;
- 
+use App\Models\UsersGroupModel;
 use Menu;
 use View; 
 use App\Models\UserGroupModel;
 use Redirect;
 use Validator;
 use Session;
+use Request;
+
 use Wudimei\ArrayHelper;
 
 class UserController{
     public function __construct(){
-        Validator::prepareFieldLabels('user'); //prepareFieldLabels from lang group name
+      //  Validator::prepareFieldLabels('user'); //prepareFieldLabels from lang group name
     }
     
 	public function index(){
@@ -22,15 +24,20 @@ class UserController{
 		 $group_id =  getInt('group_id');
 		 
 		 $user = new User();
+		 $user->select("u.*")->from("users as u");
+		 if( $group_id>0){
+		     $user->leftJoin("users_groups as ug" ,"ug.user_id=u.id");
+		 }
 		 if( trim( $keywords) != "" ){
 		 		$kw = '%' . $keywords . '%';
-		 		$user = $user->whereRaw(' ( id like ? or username like ? or  email like ? or  created_at like ? ) ' , [$kw, $kw, $kw, $kw ] );
+		 		$user = $user->whereRaw(' ( u.id like ? or username like ? or  email like ? or  created_at like ? ) ' , [$kw, $kw, $kw, $kw ] );
 		 }
 		 if( $group_id >0 ){
-		 		$user = $user->where("user_group_id", $group_id );
+		 		$user = $user->where("ug.user_group_id", $group_id );
 		 }
-		// $u = clone $user;
-		 //echo $u->toSql();
+		
+		 //echo $user->sql();
+	 
 		 
 		 $vars['pgUser'] = $pgUser = $user->paginate(10,$page );
 		 $vars['groups'] = UserGroupModel::all();
@@ -57,24 +64,29 @@ class UserController{
 		    $rules = [
 		            'id' => 'required;digits;',
 		            'username' => 'required; minlength:4;alpha_num_dash;unique:users,username,'. $id . ",id",
-		            'email' => 'required; minlength:4;unique:users,email,'. $id . ",id"
+		            'email' => 'required; minlength:4;unique:users,email,'. $id . ",id",
 		    ];
 		    
-		    if( Validator::validate($_POST,$rules) == false ){
-		        Session::flash( 'validator_errors' ,Validator::getErrors() );
-		        Redirect::back();
+		    if( Validator::validate($_POST,$rules,null) == false ){
+		          Redirect::back()->withErrors();
 		        exit();
 		    }
+		
 		    $id = intval( $_POST['id'] );
-		    $row = ArrayHelper::only( $_POST, 'username,email,user_group_id');
+		    $users_groups = @$_POST['users_group'];
+		    
+		    $row = ArrayHelper::only( $_POST, 'username,email');
 		    User::where('id' , $id )->update(  $row );
+
+		    UsersGroupModel::setGroupIds( $id, $users_groups );
+		    
 		    Redirect::back()->withSuccess( trans("user.edit_successfully"));
 		    exit();
 		}
 		$vars['user'] = User::find($id);
 		$vars['groups'] = UserGroupModel::all()  ;
+		$vars['users_groups'] = UsersGroupModel::getGroupIds( $id );
 		
-		 
 		Menu::active('user,userList');
 		echo View::make("backend.user.form",$vars);
 	}
@@ -86,7 +98,32 @@ class UserController{
 	}
 	
 	public function modifyPassword(){
+	    $vars  = ['message' => ''];
+	    if( Request::isPost()){
+	        if( Validator::validate( Request::all(),[
+	                'user_id' => 'required;min:1',
+	                'password' => 'required;minlength:6',
+	                'password2' => 'required;minlength:6;equalTo:password'
+	        ])){
+	            $password = post("password");
 	    
 	    
+	            $id = intval( @$_POST['user_id']);
+	            
+	             
+	            $new_pass = (new User())->encryptPassword(  $password );
+	         
+	            User::where('id', $id)->update(['password'=> $new_pass ] );
+	           
+	            Redirect::back()->withSuccess(trans("user.password_changed"));
+	        }
+	        else{
+	            Session::flash( 'validator_errors' ,Validator::getErrors() );
+	            Redirect::back();
+	            exit();
+	        }
+	    }
+	   
+	   
 	}
 }

@@ -25,5 +25,7 @@ return [
         'alert_title_warning' => '警告',
         'alert_title_info' => '消息',
         'alert_title_danger' => '危险',
-        
+        'new' => '新建',
+        'id' => '编号',
+        'create_successfully' => '创建成功',
 ];

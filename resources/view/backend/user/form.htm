@@ -23,7 +23,7 @@
      {! Alert::display() !}
 	<div class="box box-info">
 		   @{
-		   	$errors = Session::get( 'validator_errors' );
+		   	$errors = Session::get( 'errors' );
 		    
 		   } 
 		   
@@ -63,8 +63,8 @@
                 <div class="form-group">
                   <label for="email" class="col-sm-2 control-label">@trans('user_group.name')</label>
                   <div class="col-sm-10">
-                   		 {[ html_select    name='user_group_id' options=$groups  value_key='id' output_key='group_name'
-   												   selected=$user->user_group_id  class="form-control"   ]} 
+                   		 {[ html_checkboxes    name='users_group[]' options=$groups  value_key='id' output_key='group_name'
+   												   selected=$users_groups    ]} 
                   </div>
                 </div>
                 
@@ -90,7 +90,7 @@
 
                   <div class="col-sm-10">
                      <p class="form-control-static">{{$user->id}}</p>
-                     <input  type="hidden"  name="id"  value="{{$user->id}}" /> 
+                     <input  type="hidden"  name="user_id"  value="{{$user->id}}" /> 
                   </div>
                 </div>
                 
@@ -106,6 +106,7 @@
 
                   <div class="col-sm-10">
                     <input class="form-control" id="inputPassword3" placeholder="Password"   type="password" name="password">
+                    <span>{{@$errors['password']}}</span>
                   </div>
                 </div>
                 
@@ -114,6 +115,7 @@
 
                   <div class="col-sm-10">
                     <input class="form-control"  id="inputPassword3" placeholder="Password"  type="password" name="password2">
+                    <span>{{@$errors['password2']}}</span>
                   </div>
                 </div>
                
