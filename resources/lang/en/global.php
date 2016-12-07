@@ -27,5 +27,9 @@ return [
     'alert_title_danger' => 'Danger',
     'new' => 'new',
     'id' => 'ID',
-        'create_successfully' => '创建成功',
+    'create_successfully' => 'Create successfully',
+    'delete_successfully' => 'Delete successfully',
+    'update_successfully' => 'Update successfully',
+        
+        
 ];

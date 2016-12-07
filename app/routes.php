@@ -18,6 +18,11 @@ Route::group(['prefix' => Config::get('app.backend_url' ) ,'namespace' => '\\App
 	Route::get('/user-groups/delete','UserGroupController@delete');
 	Route::get('/user-groups/new','UserGroupController@_new');
 	Route::get('/user-groups/edit','UserGroupController@edit');
+	
+	Route::get('/permissions','PermissionController@index');
+	Route::get('/permissions/create','PermissionController@create');
+	Route::get('/permissions/edit','PermissionController@edit');
+	Route::get('/permissions/delete','PermissionController@delete');
 	/*
 	Route::group(['prefix' => '/articles','domain'=>'www.a.com'],function(){
 		Route::get('/add','IndexController@add');

@@ -28,4 +28,6 @@ return [
         'new' => '新建',
         'id' => '编号',
         'create_successfully' => '创建成功',
+        'delete_successfully' => '删除成功',
+        'update_successfully' => '更新成功',
 ];

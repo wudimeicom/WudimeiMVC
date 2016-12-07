@@ -1,6 +1,6 @@
 <?php
 $autoload_files = [
-		'D:/www/wudimei/library/Wudimei/autoload.php',
+		'/www/wudimei/library/Wudimei/autoload.php',
 		__DIR__ .'/../vendor/autoload.php',
 		__DIR__ .'/../vendor/Wudimei/autoload.php',
 		
