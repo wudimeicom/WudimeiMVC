@@ -24,7 +24,7 @@ class PermissionController{
 		 
 		 
 		 Menu::active('user,permissions');
-		echo View::make("backend.permissions.index",$vars);
+		echo View::make("backend.permission.index",$vars);
     }
     
     public function create(){
@@ -37,7 +37,7 @@ class PermissionController{
             exit();
         }
         Menu::active('user,permissions');
-        echo View::make("backend.permissions.form",$vars);
+        echo View::make("backend.permission.form",$vars);
     }
     
     public function edit(){
@@ -53,7 +53,7 @@ class PermissionController{
         $id = getInt("id");
         $vars['item'] = PermissionModel::find($id);
         Menu::active('user,permissions');
-        echo View::make("backend.permissions.form",$vars);
+        echo View::make("backend.permission.form",$vars);
     }
     
     public function delete(){

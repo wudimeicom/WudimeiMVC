@@ -22,7 +22,7 @@ class UserController{
 		
 		$vars = [];
 		$vars['message'] = Session::get('message'); 
-		$vars['validator_errors'] =Session::get('errors') ;
+		
 		 
 		echo View::make("frontend.login",$vars);
 	}
@@ -68,7 +68,7 @@ class UserController{
 	}
 	
 	public function register(){
-		$vars = ['message'=>'','validator_errors'=>[]];
+		$vars = ['message'=>'' ];
 		
 		if( Request::isPost()){
 			if( Validator::validate( Request::all(),[
@@ -92,7 +92,7 @@ class UserController{
 				exit();
 			}
 			else{
-				$vars['validator_errors'] = Validator::getErrors();
+				\Redirect::back()->withErrors(); exit();
 			}
 		}
 		echo View::make("frontend.register",$vars);
@@ -127,10 +127,10 @@ class UserController{
 					
 				}
 			}
-			 
+			\Redirect::back()->withErrors(); 
+			exit();
 		}
-		$vars['validator_errors'] = Validator::getErrors();
-	
+		 
 		echo View::make('frontend.user.changePassword', $vars );
 	}
 	

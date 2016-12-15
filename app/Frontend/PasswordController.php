@@ -25,8 +25,7 @@ class PasswordController{
 					'login' => 'required; minlength:3;',
 			];
 			if( Validator::validate($_POST,$rules) == false ){
-				Session::flash( 'validator_errors' ,Validator::getErrors() );
-				Redirect::to("/password/postEmail");
+				Redirect::to("/password/postEmail")->withErrors();
 				exit();
 			}
 			$login = Request::post("login");
@@ -35,7 +34,9 @@ class PasswordController{
 				$user = User::where('email', $login)->first();
 			}
 			if( $user == null ){
-				Session::flash( 'validator_errors' , ['login' => Lang::get('user.username_or_email_you_entered_does_no_exists')] );
+				\Validator::setError('login', trans('user.username_or_email_you_entered_does_no_exists') );
+				Redirect::to("/password/postEmail")->withErrors();
+				exit();
 			}
 			else{
 				$email = $user->email;
@@ -53,7 +54,7 @@ class PasswordController{
 				exit();
 			}
 		}
-		$vars['validator_errors'] =Session::get('validator_errors') ;
+
 		echo View::make("frontend.password.postEmail",$vars);
 	}
 	
@@ -71,8 +72,7 @@ class PasswordController{
 					'new_password2' => 'required; minlength:6;equalTo:new_password;',
 			];
 			if( Validator::validate($_POST,$rules) == false ){
-				Session::flash( 'validator_errors' ,Validator::getErrors() );
-				Redirect::back();
+				Redirect::back()->withErrors();
 				exit();
 			}
 			$token = Request::post('token');
@@ -99,7 +99,7 @@ class PasswordController{
 		}
 		
 		$vars['token'] = $token;
-		$vars['validator_errors'] =Session::get('validator_errors') ;
+		
 		echo View::make("frontend.password.reset",$vars);
 	}
 }

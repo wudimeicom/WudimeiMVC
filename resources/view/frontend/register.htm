@@ -2,52 +2,56 @@
 
 <!-- @section('content') -->
 
+@{
+$errors =Session::getError() ;
+}
+
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 			<h3>@trans('user.register')</h3>
 			<div>{{$message}}</div>
 			<form class="form-horizontal" action="" method="post">
-			  <div class="form-group @if(isset($validator_errors['username']))has-error@endif">
+			  <div class="form-group @if(isset($errors['username']))has-error@endif">
 			    <label for="inputEmail3" class="col-sm-2 control-label">@trans('user.username_label')</label>
 			    <div class="col-sm-10">
 			      <input type="text" name="username" class="form-control" id="inputEmail3" placeholder="@trans('user.username')" value="{{@$_POST['username']}}">
-			      <p class="help-block">{{@$validator_errors['username']}}</p>
+			      <p class="help-block">{{@$errors['username']}}</p>
 			    </div>
 			    
 			  </div>
 			  
-			  <div class="form-group @if(isset($validator_errors['email']))has-error@endif">
+			  <div class="form-group @if(isset($errors['email']))has-error@endif">
 			    <label for="inputEmail3" class="col-sm-2 control-label">@trans('user.email_label')</label>
 			    <div class="col-sm-10">
 			      <input type="text" name="email" class="form-control" id="inputEmail3" placeholder="@trans('user.email')"  value="{{@$_POST['email']}}">
-			      <p class="help-block">{{@$validator_errors['email']}}</p>
+			      <p class="help-block">{{@$errors['email']}}</p>
 			    </div>
 			    
 			  </div>
 			  
-			  <div class="form-group @if(isset($validator_errors['password']))has-error@endif">
+			  <div class="form-group @if(isset($errors['password']))has-error@endif">
 			    <label for="inputPassword3" class="col-sm-2 control-label">@trans('user.password_label')</label>
 			    <div class="col-sm-10">
 			      <input type="password" name="password" class="form-control" id="inputPassword3" placeholder="@trans('user.password')">
-			      <p class="help-block">{{@$validator_errors['password']}}</p>
+			      <p class="help-block">{{@$errors['password']}}</p>
 			    </div>
 			    
 			  </div>
-			  <div class="form-group @if(isset($validator_errors['password_confirmation']))has-error@endif">
+			  <div class="form-group @if(isset($errors['password_confirmation']))has-error@endif">
 			    <label for="inputPassword3" class="col-sm-2 control-label">@trans('user.password_confirmation_label')</label>
 			    <div class="col-sm-10">
 			      <input type="password" name="password_confirmation" class="form-control" id="inputPassword3" placeholder="@trans('user.password_confirmation')">
-			      <p class="help-block">{{@$validator_errors['password_confirmation']}}</p>
+			      <p class="help-block">{{@$errors['password_confirmation']}}</p>
 			    </div>
 			    
 			  </div>
 			  <div class="form-group">
 			    <div class="col-sm-offset-2 col-sm-10">
-			      <div class="checkbox @if(isset($validator_errors['accept_aggrement']))has-error@endif">
+			      <div class="checkbox @if(isset($errors['accept_aggrement']))has-error@endif">
 			        <label>
 			          <input type="checkbox" name="accept_aggrement" @if(isset($_POST['accept_aggrement']))checked="checked"@endif> @trans('user.accept_aggrement')
-			          <p class="help-block">{{@$validator_errors['accept_aggrement']}}</p>
+			          <p class="help-block">{{@$errors['accept_aggrement']}}</p>
 			        </label>
 			      </div>
 			    </div>

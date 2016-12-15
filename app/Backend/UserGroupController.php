@@ -12,8 +12,13 @@ use Request;
 
 
 use Wudimei\ArrayHelper;
+use App\Models\PermissionModel;
+use App\Models\UserGroupPermissionModel;
 
 class UserGroupController{
+    public function __construct(){
+        
+    }
     public function index(){
         $vars = [];
       
@@ -59,4 +64,32 @@ class UserGroupController{
         \Redirect::back()->withSuccess(trans("user.delete_successfully"));
     }
     
+    public function permission(){
+        $vars = [];
+        $vars['group_id'] = $group_id = getInt("group_id");
+        
+        if( Request::isPost()){
+            //print_r( $_POST);
+            $group_id = intval(post("group_id"));
+            $perms = @$_POST['perms'];
+            //echo $group_id; print_r( $perms);
+            UserGroupPermissionModel::setPermissions($group_id, $perms);
+            Redirect::back()->withSuccess( trans( 'user_group.this_group_permission_was_updated' ));
+            exit();
+        }
+        $perms = PermissionModel::all();
+       
+        $perms2 = array();
+        for( $i=0;$i< count( $perms);$i++){
+            $r = $perms[$i];
+            $code = $r->code;
+            list( $group,$item) = explode(".", $code);
+            $perms2[$group][] = $r;
+        }
+       // print_r( $perms2 );
+        $vars['perms'] = $perms2;
+        $vars['group_perms'] = UserGroupPermissionModel::getPermissions($group_id);
+        Menu::active('user,userGroup');
+        echo View::make("backend.user_group.permission",$vars);
+    }
 }

@@ -23,7 +23,7 @@
      {! Alert::display() !}
 	<div class="box box-info">
 		   @{
-		   	$errors = Session::get( 'errors' );
+		   	$errors = Session::getError();
 		    
 		   } 
 		   
@@ -79,6 +79,10 @@
           </div>
    
 	 <div class="box box-info">
+	 	@{
+		   	$errors = Session::getError('changePassword');
+		    
+		   } 
             <form class="form-horizontal"  method="post"  action="@backend_url('/users/modifyPassword')">
                 <div class="box-header with-border2222">
                   <h3 class="box-title"></h3>

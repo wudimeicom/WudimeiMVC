@@ -31,8 +31,9 @@
         	   		<td>{{$g->group_name}}</td>
         	   		 
         	   		<td>
-        	   			<a href="{{url_b('/user-groups/edit?id=')}}{{$g->id}}"   >@trans('global.Edit')</a>
-        	   			<a href="{{url_b('/user-groups/delete?id=')}}{{$g->id}}"  onclick="return confirm('@trans('global.delete_confirm')')">@trans('global.Delete')</a>
+        	   			<a href="{{url_b('/user-groups/edit?id=' . $g->id )}}"   >@trans('global.Edit')</a>
+        	   			<a href="{{url_b('/user-groups/delete?id=' . $g->id )}}"  onclick="return confirm('@trans('global.delete_confirm')')">@trans('global.Delete')</a>
+        	   			<a href="{{url_b('/user-groups/permission?group_id=' . $g->id ) }}"   >@trans('permission._name')</a>
         	   		</td>
         	   </tr>
         	   @foreachelse

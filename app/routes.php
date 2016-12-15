@@ -18,6 +18,7 @@ Route::group(['prefix' => Config::get('app.backend_url' ) ,'namespace' => '\\App
 	Route::get('/user-groups/delete','UserGroupController@delete');
 	Route::get('/user-groups/new','UserGroupController@_new');
 	Route::get('/user-groups/edit','UserGroupController@edit');
+	Route::get('/user-groups/permission','UserGroupController@permission');
 	
 	Route::get('/permissions','PermissionController@index');
 	Route::get('/permissions/create','PermissionController@create');

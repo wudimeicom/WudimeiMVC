@@ -23,7 +23,7 @@
      {! Alert::display() !}
 	<div class="box box-info">
 		   @{
-		   	$errors = Session::get( 'validator_errors' );
+		   	$errors = Session::getError();
 		    
 		   } 
 		   

@@ -118,9 +118,8 @@ class UserController{
 	            Redirect::back()->withSuccess(trans("user.password_changed"));
 	        }
 	        else{
-	            Session::flash( 'validator_errors' ,Validator::getErrors() );
-	            Redirect::back();
-	            exit();
+	            Redirect::back()->withErrors(null,'changePassword');
+		        exit();
 	        }
 	    }
 	   

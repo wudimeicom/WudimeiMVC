@@ -2,17 +2,20 @@
 
 <!-- @section('content') -->
 
+@{
+$errors = Session::getError();
+}
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 			<h3>@trans('user.reset_password')</h3>
 			<div>{{$message}}</div>
 			<form class="form-horizontal" action="" method="post">
-			  <div class="form-group @if(isset($validator_errors['login']))has-error@endif">
+			  <div class="form-group @if(isset($errors['login']))has-error@endif">
 			    <label for="inputEmail3" class="col-sm-2 control-label">@trans('user.email_or_username')</label>
 			    <div class="col-sm-10">
 			      <input type="text" name="login" class="form-control" id="inputEmail3" placeholder="@trans('user.email_or_username')">
-			      <p class="help-block">{{@$validator_errors['login']}}</p>
+			      <p class="help-block">{{@$errors['login']}}</p>
 			    </div>
 			    
 			  </div>

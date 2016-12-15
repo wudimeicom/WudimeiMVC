@@ -7,5 +7,6 @@ return [
         'code' => '代码',
         'name' => '名称',
         'description' => '描述',
-        'id' => '编号'
+        'id' => '编号',
+        
 ];
