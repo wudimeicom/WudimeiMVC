@@ -9,12 +9,14 @@ use Setting;
 use App\Models\SettingGroupModel;
 use Wudimei\ArrayHelper;
 use Menu;
+use Security;
 
 class SettingController{
 	public function index(){
-		
+	    Security::check('setting.read');
 		$vars = [];
 		if( Request::isPost() ){
+		    Security::check('setting.update');
 			$data = Request::post("data");
 			//print_r( $data );
 			
@@ -30,26 +32,10 @@ class SettingController{
 		$settings = SettingModel::all();
 		$setting_groups = SettingGroupModel::all();
 		$group_id = Request::getInt("group_id",1);
-		$grouped_settings = ArrayHelper::groupBy( $settings, "setting_group_id");
-		 //print_r( $grouped_settings );
-		//Config::set("app.backend_url",'123');
-		//echo Config::get("app.backend_url");
-		//exit();
-		//print_r( $settings );
-		//echo Setting::get('SITE.NAME');
-		/*
-		$item = [
-			'name' => 'admin.email' ,
-			'value' => '****@wudimei.com',
-			'label' => 'Administrator\'s email',
-			'tip' => 'please enter an email address',
-			'type' => 'text',
-			'properties' => '{"default":"","size":50}',
-			'setting_group_id' => 3
-		];
-		SettingModel::insert( $item ); */
+		$grouped_settings = array_groupBy( $settings, "setting_group_id");
+		
 		Menu::active('setting');
 		$vars = ['settings' => $settings , 'setting_groups' => $setting_groups ,'grouped_settings' => $grouped_settings ,'group_id' => $group_id ];
-		echo View::make("backend.setting.index",$vars);
+		return  View::make("backend.setting.index",$vars);
 	}
 }

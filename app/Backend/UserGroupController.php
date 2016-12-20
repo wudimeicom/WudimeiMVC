@@ -9,6 +9,7 @@ use Redirect;
 use Validator;
 use Session;
 use Request;
+use Security;
 
 
 use Wudimei\ArrayHelper;
@@ -21,50 +22,59 @@ class UserGroupController{
     }
     public function index(){
         $vars = [];
-      
-        $vars['groups'] = UserGroupModel::all();
+        $keywords =  get('keywords');
+        Security::check('user_group.read');
+        
+        $userGroup = new UserGroupModel();
+        if( trim( $keywords) != "" ){
+            $kw = '%' . $keywords . '%';
+            $userGroup = $userGroup->whereRaw(' (  id like ? or group_name like ? ) ' , [$kw, $kw] );
+        }
+        $vars['groups'] = UserGroupModel::get();
         	
         Menu::active('user,userGroup');
-        echo View::make("backend.user_group.index",$vars);
+       return  View::make("backend.user_group.index",$vars);
     }
     
     public function _new(){
+        Security::check('user_group.create');
         $vars = ['method' => 'add'];
         
         if( Request::isPost()){
             $group_name = post('group_name');
             $gid = UserGroupModel::insert( ['group_name' => $group_name ] );
            // echo $gid;
-            \Redirect::to(url_b('/user-groups'))->withSuccess(trans("user_group.create_successfully"));
-            exit();
+            return Redirect::to(url_b('/user-groups'))->withSuccess(trans("user_group.create_successfully"));
         }
         Menu::active('user,userGroup');
-        echo View::make("backend.user_group.form",$vars);
+        return  View::make("backend.user_group.form",$vars);
     }
     
     public function edit(){
+        Security::check('user_group.update');
         $vars['method'] = 'edit';
         if( Request::isPost( ) ){
             $group_name = post('group_name');
             $id = intval(post('id'));
             UserGroupModel::where('id',$id)->update(['group_name'=> $group_name]);
-            \Redirect::to(url_b('/user-groups'))->withSuccess(trans("user_group.group_name_was_updated_successfully"));
-            exit();
+           return Redirect::to(url_b('/user-groups'))->withSuccess(trans("user_group.group_name_was_updated_successfully"));
         }
         $id = getInt("id");
         $group = UserGroupModel::find($id);
         $vars['group'] = $group;
         Menu::active('user,userGroup');
-        echo View::make("backend.user_group.form",$vars);
+        return  View::make("backend.user_group.form",$vars);
     }
     
     public function delete(){
+        Security::check('user_group.delete');
         $id = getInt("id");
         UserGroupModel::where('id',$id)->delete();
-        \Redirect::back()->withSuccess(trans("user.delete_successfully"));
+       return  Redirect::back()->withSuccess(trans("user.delete_successfully"));
     }
     
     public function permission(){
+        Security::check('user_group.permission');
         $vars = [];
         $vars['group_id'] = $group_id = getInt("group_id");
         
@@ -74,8 +84,7 @@ class UserGroupController{
             $perms = @$_POST['perms'];
             //echo $group_id; print_r( $perms);
             UserGroupPermissionModel::setPermissions($group_id, $perms);
-            Redirect::back()->withSuccess( trans( 'user_group.this_group_permission_was_updated' ));
-            exit();
+           return  Redirect::back()->withSuccess( trans( 'user_group.this_group_permission_was_updated' ));
         }
         $perms = PermissionModel::all();
        
@@ -90,6 +99,6 @@ class UserGroupController{
         $vars['perms'] = $perms2;
         $vars['group_perms'] = UserGroupPermissionModel::getPermissions($group_id);
         Menu::active('user,userGroup');
-        echo View::make("backend.user_group.permission",$vars);
+        return  View::make("backend.user_group.permission",$vars);
     }
 }

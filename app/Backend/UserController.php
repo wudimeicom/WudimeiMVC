@@ -9,7 +9,7 @@ use Redirect;
 use Validator;
 use Session;
 use Request;
-
+use Security;
 use Wudimei\ArrayHelper;
 
 class UserController{
@@ -18,11 +18,13 @@ class UserController{
     }
     
 	public function index(){
+	     
 		 $vars = [];
 		 $page =  getInt("page",1);
 		 $keywords =  get('keywords');
 		 $group_id =  getInt('group_id');
 		 
+		 Security::check("user.read");
 		 $user = new User();
 		 $user->select("u.*")->from("users as u");
 		 if( $group_id>0){
@@ -43,20 +45,23 @@ class UserController{
 		 $vars['groups'] = UserGroupModel::all();
 		 
 		 Menu::active('user,userList');
-		echo View::make("backend.user.index",$vars);
+		return  View::make("backend.user.index",$vars);
 	}
 	
 	public function add(){
+	    
+	    Security::check("user.create");
 		$vars = ['method' => 'add'];
 		 
 		$vars['user'] = new \stdClass();
 		$vars['groups'] =UserGroupModel::all() ;
 		
 		Menu::active('user,userList');
-		echo View::make("backend.user.form",$vars);
+		return  View::make("backend.user.form",$vars);
 	}
 	
 	public function edit(){
+	    Security::check("user.update");
 		$vars = ['method' => 'edit'];
 		$id = getInt("id");
 		
@@ -68,8 +73,7 @@ class UserController{
 		    ];
 		    
 		    if( Validator::validate($_POST,$rules,null) == false ){
-		          Redirect::back()->withErrors();
-		        exit();
+		          return Redirect::back()->withErrors();
 		    }
 		
 		    $id = intval( $_POST['id'] );
@@ -80,25 +84,28 @@ class UserController{
 
 		    UsersGroupModel::setGroupIds( $id, $users_groups );
 		    
-		    Redirect::back()->withSuccess( trans("user.edit_successfully"));
-		    exit();
+		    return Redirect::back()->withSuccess( trans("user.edit_successfully"));
 		}
 		$vars['user'] = User::find($id);
 		$vars['groups'] = UserGroupModel::all()  ;
 		$vars['users_groups'] = UsersGroupModel::getGroupIds( $id );
 		
 		Menu::active('user,userList');
-		echo View::make("backend.user.form",$vars);
+		return  View::make("backend.user.form",$vars);
 	}
 	
 	public function delete(){
+	    Security::check("user.delete");
 		$id = getInt("id");
+		
 		User::where('id', $id)->delete();
-		Redirect::back()->withSuccess(trans("user.delete_successfully"));
+		return Redirect::back()->withSuccess(trans("user.delete_successfully"));
 	}
 	
 	public function modifyPassword(){
+	    Security::check("user.modifyPassword");
 	    $vars  = ['message' => ''];
+	    
 	    if( Request::isPost()){
 	        if( Validator::validate( Request::all(),[
 	                'user_id' => 'required;min:1',
@@ -115,11 +122,10 @@ class UserController{
 	         
 	            User::where('id', $id)->update(['password'=> $new_pass ] );
 	           
-	            Redirect::back()->withSuccess(trans("user.password_changed"));
+	            return Redirect::back()->withSuccess(trans("user.password_changed"));
 	        }
 	        else{
-	            Redirect::back()->withErrors(null,'changePassword');
-		        exit();
+	            return Redirect::back()->withErrors(null,'changePassword');
 	        }
 	    }
 	   

@@ -1,0 +1,62 @@
+<!-- @extends('backend.layouts.master') -->
+
+<!-- @section('title',"@trans('user.Users')" ) --> 
+<!-- @section('content_header', "@trans('user_group._name')" ) --> 
+<!-- @section('content_header_desc', "" ) --> 
+
+<!-- @section('breadcrumb') -->
+        
+        <li class="active">@trans('user_group._name')</li>
+<!-- @endsection -->
+        
+<!-- @section('content') --> 
+ 
+    {! Alert::display() !}
+	<div class="box">
+		 
+        <div class="box-body">
+             <form class="form-inline" method="get">
+        	    <div class="form-group">
+           			 <a href="{{url_b('/user-groups/new')}}"   class="btn btn-success btn-flat" ><i class="fa fa-plus"></i> @trans('global.new')</a>
+        	    </div>
+        	    <div class="form-group">
+			    	<label class="sr-only" for="keywords">@trans('global.keywords')</label>
+			    	<input type="text" class="form-control"  id="keywords" name="keywords"  value="{{Request::get('keywords')}}" placeholder="">
+			    </div>
+        	    <input type="submit"  class="btn btn-info btn-flat"   value="@trans('global.search')" />
+        	 </form>
+        	 <br />
+        	 
+        	 <table class="table">
+        	   <tr>
+        	   		<th>@trans('user.User ID')</th>
+        	   		<th>@trans('user_group.group_name')</th>
+        	   		 
+        	   		<th>@trans('global.actions')</th>
+        	   </tr>
+        	   @foreach( $groups as $g)
+        	   <tr>
+        	   		<td>{{$g->id}}</td>
+        	   		<td>{{$g->group_name}}</td>
+        	   		 
+        	   		<td>
+        	   			<a href="{{url_b('/user-groups/edit?id=' . $g->id )}}"    class="btn btn-success btn-xs btn-flat" ><i class="fa fa-edit"></i> @trans('global.Edit')</a>
+        	   			<a href="{{url_b('/user-groups/delete?id=' . $g->id )}}"  onclick="return confirm('@trans('global.delete_confirm')')"  class="btn btn-danger btn-xs btn-flat" ><i class="fa fa-trash"></i> @trans('global.Delete')</a>
+        	   			<a href="{{url_b('/user-groups/permission?group_id=' . $g->id ) }}"  class="btn btn-warning btn-xs btn-flat"  ><i class="fa fa-key"></i> @trans('permission._name')</a>
+        	   		</td>
+        	   </tr>
+        	   @foreachelse
+        	     <tr>
+        	       <td colspan="5">@trans('global.no result available')</td>
+        	     </tr>
+        	   @endforeach
+        	   </table>
+        	    
+        </div>
+       
+	</div>
+   
+	 
+	 
+
+<!-- @endsection -->

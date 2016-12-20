@@ -25,7 +25,7 @@
 			  	 {[ html_select options=$groups value_key='id' output_key='group_name' name="group_id" 
 			  	selected=Request::get('group_id')  class="form-control"  first_value=0 first_text=trans('global.please_select')   ]}
 			  </div>
-        	   <input type="submit"  class="btn btn-info btn-flat" >
+        	   <input type="submit"  class="btn btn-info btn-flat"  value="@trans('global.search')" >
         	 </form>
         	 <br />
         	 
@@ -44,8 +44,8 @@
         	   		<td>{{$user->email}}</td>
         	   		<td>{{$user->created_at}}</td>
         	   		<td>
-        	   			<a href="{{url_b('/users/edit?id=')}}{{$user->id}}"   >@trans('global.Edit')</a>
-        	   			<a href="{{url_b('/users/delete?id=')}}{{$user->id}}"  onclick="return confirm('@trans('global.delete_confirm')')">@trans('global.Delete')</a>
+        	   			<a href="{{url_b('/users/edit?id=')}}{{$user->id}}"   class="btn btn-success btn-xs btn-flat"  ><i class="fa fa-trash"></i> @trans('global.Edit')</a>
+        	   			<a href="{{url_b('/users/delete?id=')}}{{$user->id}}"  onclick="return confirm('@trans('global.delete_confirm')')"  class="btn btn-danger btn-xs btn-flat" ><i class="fa fa-trash"></i> @trans('global.Delete')</a>
         	   		</td>
         	   </tr>
         	   @foreachelse

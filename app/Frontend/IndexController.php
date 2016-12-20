@@ -9,7 +9,7 @@ class IndexController{
 		//echo "hello,world";
 		$vars = [];
 		
-		echo View::make("frontend.index",$vars);
+		return  View::make("frontend.index",$vars);
 	}
 	
 }

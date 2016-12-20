@@ -5,10 +5,12 @@ use Menu;
 use View;
 use Request;
 use Redirect;
+use Security;
 
 class PermissionController{
     
     public function index(){
+        Security::check('permission.read');
          $vars = [];
 		 $page =  getInt("page",1);
 		 $keywords =  get('keywords');
@@ -24,41 +26,42 @@ class PermissionController{
 		 
 		 
 		 Menu::active('user,permissions');
-		echo View::make("backend.permission.index",$vars);
+		return  View::make("backend.permission.index",$vars);
     }
     
     public function create(){
+        Security::check('permission.create');
         $vars =  ['method' => 'add'];
         if( Request::isPost()){
             $row = array_only( $_POST,'code,name,description');
             $pid = PermissionModel::insert( $row );
             // echo $gid;
-            \Redirect::to(url_b('/permissions'))->withSuccess(trans("global.create_successfully"));
-            exit();
+            return Redirect::to(url_b('/permissions'))->withSuccess(trans("global.create_successfully"));
         }
         Menu::active('user,permissions');
-        echo View::make("backend.permission.form",$vars);
+        return  View::make("backend.permission.form",$vars);
     }
     
     public function edit(){
+        Security::check('permission.update');
         $vars =  ['method' => 'edit'];
         if( Request::isPost()){
             $id = intval( post("id"));
             $row = array_only( $_POST,'code,name,description');
             $pid = PermissionModel::where("id",$id)->update( $row );
             // echo $gid;
-            \Redirect::to(url_b('/permissions'))->withSuccess(trans("global.create_successfully"));
-            exit();
+            return Redirect::to(url_b('/permissions'))->withSuccess(trans("global.create_successfully"));
         }
         $id = getInt("id");
         $vars['item'] = PermissionModel::find($id);
         Menu::active('user,permissions');
-        echo View::make("backend.permission.form",$vars);
+        return  View::make("backend.permission.form",$vars);
     }
     
     public function delete(){
+        Security::check('permission.delete');
         $id = getInt("id");
         PermissionModel::where("id", $id)->delete();
-       \Redirect::back()->withSuccess(trans("global.delete_successfully"));
+       return Redirect::back()->withSuccess(trans("global.delete_successfully"));
     }
 }

@@ -25,8 +25,7 @@ class PasswordController{
 					'login' => 'required; minlength:3;',
 			];
 			if( Validator::validate($_POST,$rules) == false ){
-				Redirect::to("/password/postEmail")->withErrors();
-				exit();
+				return Redirect::to("/password/postEmail")->withErrors();
 			}
 			$login = Request::post("login");
 			$user = User::where('username', $login)->first();
@@ -35,8 +34,7 @@ class PasswordController{
 			}
 			if( $user == null ){
 				\Validator::setError('login', trans('user.username_or_email_you_entered_does_no_exists') );
-				Redirect::to("/password/postEmail")->withErrors();
-				exit();
+				return Redirect::to("/password/postEmail")->withErrors();
 			}
 			else{
 				$email = $user->email;
@@ -50,17 +48,16 @@ class PasswordController{
 				//echo $title;
 				//echo $content;
 				Mail::to( $email)->subject( $title)->content( $content)->send();
-				Redirect::to("/password/emailSent");
-				exit();
+				return Redirect::to("/password/emailSent");
 			}
 		}
 
-		echo View::make("frontend.password.postEmail",$vars);
+		return  View::make("frontend.password.postEmail",$vars);
 	}
 	
 	public function emailSent(){
 		$vars['message'] = Lang::get("user.the_password_resetting_email_was_sent_to_you");
-		echo View::make("frontend.success",$vars);
+		return View::make("frontend.success",$vars);
 	}
 	
 	public function reset(){
@@ -72,34 +69,30 @@ class PasswordController{
 					'new_password2' => 'required; minlength:6;equalTo:new_password;',
 			];
 			if( Validator::validate($_POST,$rules) == false ){
-				Redirect::back()->withErrors();
-				exit();
+				return Redirect::back()->withErrors();
 			}
 			$token = Request::post('token');
 			$row = PasswordResetModel::where('token',$token)->first();
 			if( !isset( $row->user_id )){
 				$vars['message'] = Lang::get('user.invalid_token');
-				echo View::make("frontend.error",$vars);
-				exit();
+				return  View::make("frontend.error",$vars);
 			}
 			$password = Request::post('new_password');
 			User::where('id', $row->user_id)->update(['password' => (new User())->encryptPassword( $password) ]);
 			//PasswordResetModel::where('token',$token)->delete();
 			$vars['message'] = Lang::get('user.reset_password_success');
-			echo View::make("frontend.success",$vars);
-			exit();
+			return  View::make("frontend.success",$vars);
 		}
 		$token = Request::get('token');
 		$row = PasswordResetModel::where('token',$token)->first();
 		
 		if( !isset( $row->user_id )){
 			$vars['message'] = Lang::get('user.invalid_token');
-			echo View::make("frontend.error",$vars);
-			exit();
+			return  View::make("frontend.error",$vars);
 		}
 		
 		$vars['token'] = $token;
 		
-		echo View::make("frontend.password.reset",$vars);
+		return  View::make("frontend.password.reset",$vars);
 	}
 }

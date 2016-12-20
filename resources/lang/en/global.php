@@ -30,6 +30,10 @@ return [
     'create_successfully' => 'Create successfully',
     'delete_successfully' => 'Delete successfully',
     'update_successfully' => 'Update successfully',
-        
-        
+    'search' => 'Search',
+        'Page_First' => 'First',
+        'Page_Prev' => 'Prev',
+        'Page_Next' => 'Next',
+        'Page_Last' => 'Last',
+      'permission_required' => 'The system require the permission named "{permission_name}!"',  
 ];

@@ -1,5 +1,5 @@
 <?php return array (
-  'SITE.NAME' => '深圳市无敌美电子商务商行',
+  'SITE.NAME' => '深圳市无敌美电子商务商行2',
   'SITE.ADDRESS' => '广东省深圳市',
   'SITE.ZIPCODE' => '518100',
   'SITE.CELLPHONE' => '13714715608',

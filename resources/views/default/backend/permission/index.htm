@@ -16,15 +16,18 @@
 		 
         <div class="box-body">
         
-            <a href="{{url_b('/permissions/create')}}"><i class="fa fa-plus"></i>@trans("global.new")</a>
+            
             
         	 <form class="form-inline" method="get">
+        	    <div class="form-group">
+        	    		<a href="{{url_b('/permissions/create')}}"  class="btn btn-success btn-flat" ><i class="fa fa-plus"></i> @trans("global.new")</a>
+        	    </div>
         	    <div class="form-group">
 			    <label class="sr-only" for="keywords">@trans('global.keywords')</label>
 			    <input type="text" class="form-control"  id="keywords" name="keywords"  value="{{Request::get('keywords')}}" placeholder="">
 			  </div>
 			  
-        	   <input type="submit"  class="btn btn-info btn-flat" >
+        	   <input type="submit"  class="btn btn-info btn-flat"  value="@trans('global.search')" >
         	 </form>
         	 <br />
         	 
@@ -43,8 +46,8 @@
         	   		<td>{{$item->name}}</td>
         	   		<td>{{$item->description}}</td>
         	   		<td>
-        	   			<a href="{{url_b('/permissions/edit?id=')}}{{$item->id}}"   ><i class="fa fa-trash"></i> @trans('global.Edit')</a>
-        	   			<a href="{{url_b('/permissions/delete?id=')}}{{$item->id}}"  onclick="return confirm('@trans('global.delete_confirm')')"><i class="fa fa-trash"></i>@trans('global.Delete')</a>
+        	   			<a href="{{url_b('/permissions/edit?id=')}}{{$item->id}}"     class="btn btn-success btn-xs btn-flat" ><i class="fa fa-trash"></i> @trans('global.Edit')</a>
+        	   			<a href="{{url_b('/permissions/delete?id=')}}{{$item->id}}"  onclick="return confirm('@trans('global.delete_confirm')')"   class="btn btn-danger btn-xs btn-flat" ><i class="fa fa-trash"></i>@trans('global.Delete')</a>
         	   		</td>
         	   </tr>
         	   @foreachelse

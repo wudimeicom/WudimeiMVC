@@ -24,7 +24,7 @@ class UserController{
 		$vars['message'] = Session::get('message'); 
 		
 		 
-		echo View::make("frontend.login",$vars);
+		return  View::make("frontend.login",$vars);
 	}
 	
 	public function loginSubmit(){
@@ -33,7 +33,8 @@ class UserController{
 		$login = Request::post('login');
 		$password = Request::post('password');
 		$remember_me = Request::post('remember_me',false );
-		if( isset( $remember_me)){
+		
+		if( $remember_me != false ){
 			$remember_me = true;
 		}
 		
@@ -43,28 +44,30 @@ class UserController{
 		];
 		
 		if( Validator::validate($_POST,$rules) == false ){
-			Redirect::to("/login")->withErrors();
-			exit();
+			return Redirect::to("/login")->withErrors();
 		}
 		
-		if(   \Auth::attempt(['username'=> $login,'password'=> $password], $remember_me ) ){
+		if( $remember_me == true ){
+		    Auth::setTokenLifeTime( 3600*24* 7); //7 days
+		}
+		
+		if(   Auth::attempt(['username'=> $login,'password'=> $password], $remember_me ) ){
 	
 		}
 		else{
-			 \Auth::attempt(['email'=> $login,'password'=> $password], $remember_me );
+			 Auth::attempt(['email'=> $login,'password'=> $password], $remember_me );
 		}
 		if( Auth::check() ){
-			Redirect::to("/");
+			return Redirect::to("/");
 		}
 		else{
-			Session::flash('message', Lang::get('user.wrong_username_or_password') );
-			Redirect::to("/login");
+			return Redirect::to("/login")->with(trans('user.wrong_username_or_password'));
 		}
 	}
 	
 	public function logout(){
 		Auth::logout();
-		Redirect::to("/");
+		return Redirect::to("/");
 	}
 	
 	public function register(){
@@ -87,15 +90,13 @@ class UserController{
 				        'created_at' => date("Y-m-d H:i:s")
 				];
 				$userId = $userModel->insert( $row );
-				//echo $userId;
-				echo View::make("frontend.success",['message' => Lang::get('user.register_success')]);
-				exit();
+				return  View::make("frontend.success",['message' => Lang::get('user.register_success')]);
 			}
 			else{
-				\Redirect::back()->withErrors(); exit();
+				return Redirect::back()->withErrors(); 
 			}
 		}
-		echo View::make("frontend.register",$vars);
+		return  View::make("frontend.register",$vars);
 	}
 	
 	public function changePassword(){
@@ -119,19 +120,19 @@ class UserController{
 					//echo $new_pass;
 					User::where('id', $id)->update(['password'=> $new_pass ] );
 					$vars['message'] = Lang::get('user.password_changed');
-					echo View::make('frontend.success', $vars);
-					exit();
+					return  View::make('frontend.success', $vars);
 				}
 				else{
 				    Validator::setError(  "old_password",	Lang::get("user.wrong_old_password") );
 					
 				}
 			}
-			\Redirect::back()->withErrors(); 
-			exit();
+			
+			
+			return Redirect::back()->withErrors(); 
+			
 		}
-		 
-		echo View::make('frontend.user.changePassword', $vars );
+		return  View::make('frontend.user.changePassword', $vars );
 	}
 	
 }

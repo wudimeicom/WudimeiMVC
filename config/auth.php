@@ -8,6 +8,8 @@ return array(
 		'token_name' => 'wudimei_tk',
 		/**
 		 * token lifetime,in seconds.
+		 * 0：till this session
+		 * 
 		 */
 		'lifetime' =>  0,
 		/**

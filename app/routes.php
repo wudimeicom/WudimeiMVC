@@ -14,6 +14,7 @@ Route::group(['prefix' => Config::get('app.backend_url' ) ,'namespace' => '\\App
 	
 	Route::get('','IndexController@index');
 	Route::get('/','IndexController@index');
+	
 	Route::get('/user-groups','UserGroupController@index');
 	Route::get('/user-groups/delete','UserGroupController@delete');
 	Route::get('/user-groups/new','UserGroupController@_new');

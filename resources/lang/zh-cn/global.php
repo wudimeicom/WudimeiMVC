@@ -30,4 +30,11 @@ return [
         'create_successfully' => '创建成功',
         'delete_successfully' => '删除成功',
         'update_successfully' => '更新成功',
+        'search' => '搜索',
+        
+        'Page_First' => '头页',
+        'Page_Prev' => '上页',
+        'Page_Next' => '下页',
+        'Page_Last' => '尾页',
+        'permission_required' => '系统要求"{permission_name}!"的权限。',
 ];
