@@ -3,7 +3,8 @@
 
 Route::get('/','App\\Frontend\\IndexController');
 
-Route::group(['prefix' => Config::get('app.backend_url' ) ,'namespace' => '\\App\\Backend'],function(){
+Route::group(['prefix' => Config::get('app.backend_url' ) ,'namespace' => '\\App\\Backend' ,
+        'middlewares'=>['BackendAuth','App\\Middlewares\BackendTest']],function(){
 	
 	Route::get('/setting','SettingController@index');
 	Route::get('/users','UserController@index');
@@ -21,14 +22,16 @@ Route::group(['prefix' => Config::get('app.backend_url' ) ,'namespace' => '\\App
 	Route::get('/user-groups/edit','UserGroupController@edit');
 	Route::get('/user-groups/permission','UserGroupController@permission');
 	
+	Route::group(['prefix' => '/articles','domain'=>'www.a.com' ,'middlewares'=>['eeee','ffff']],function(){
+	    Route::get('/add','IndexController@add');
+	});
+	
 	Route::get('/permissions','PermissionController@index');
 	Route::get('/permissions/create','PermissionController@create');
 	Route::get('/permissions/edit','PermissionController@edit');
 	Route::get('/permissions/delete','PermissionController@delete');
-	/*
-	Route::group(['prefix' => '/articles','domain'=>'www.a.com'],function(){
-		Route::get('/add','IndexController@add');
-	});*/
+	
+	
 });
 
 Route::group(['prefix' => '/','namespace' => 'App\\Frontend'],function(){
