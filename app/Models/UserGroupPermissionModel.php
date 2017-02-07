@@ -19,9 +19,15 @@ class UserGroupPermissionModel  extends Model{
     }
     
     public static function setPermissions($group_id,$permissins ){
+         if( !isset($permissins)){
+             $permissins = array();
+         }
          $old_perms = static::getPermissions($group_id);
+         //print_r( $old_perms);
+        // print_r( $permissins);
          
          $arr_del = array_diff( $old_perms, $permissins);
+        // print_r( $arr_del);
          foreach ( $arr_del as $id ){
              UserGroupPermissionModel::where("group_id",$group_id)->where("permission_id",$id)->delete();
          }
@@ -29,5 +35,6 @@ class UserGroupPermissionModel  extends Model{
          foreach ( $arr_add as $id ){
              UserGroupPermissionModel::insert( ['group_id' => $group_id,'permission_id' => $id ]);
          }
+       
     }
 }

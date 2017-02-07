@@ -43,7 +43,7 @@
         	   <tr>
         	   		<td>{{$item->id}}</td>
         	   		<td>{{$item->code}}</td>
-        	   		<td>{{$item->name}}</td>
+        	   		<td>@if( trans($item->name) !="") {{trans($item->name)}} @else {{$item->name}}  @endif</td>
         	   		<td>{{$item->description}}</td>
         	   		<td>
         	   			<a href="{{url_b('/permissions/edit?id=')}}{{$item->id}}"     class="btn btn-success btn-xs btn-flat" ><i class="fa fa-trash"></i> @trans('global.Edit')</a>

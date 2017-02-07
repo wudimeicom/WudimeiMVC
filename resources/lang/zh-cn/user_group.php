@@ -6,4 +6,5 @@ return [
         'permission_setting' => '权限设置',
         'this_group_permission_was_updated' => "这用户组的权限已经更新！",
         'group_name' => '组名称',
+        'permission_setting_L' => '用户组.设置权限'
 ];

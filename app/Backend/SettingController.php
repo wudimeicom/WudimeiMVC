@@ -12,7 +12,7 @@ use Security;
 
 class SettingController{
 	public function index(){
-	    Security::check('setting.read');
+	    if( $redirect = Security::check('setting.read') ) return $redirect;
 		$vars = [];
 		if( Request::isPost() ){
 		    Security::check('setting.update');

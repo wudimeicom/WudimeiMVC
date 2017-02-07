@@ -10,7 +10,8 @@ use Security;
 class PermissionController{
     
     public function index(){
-        Security::check('permission.read');
+        #@ abc('name')
+        if( $redirect = Security::check('permission.read') ) return $redirect;
          $vars = [];
 		 $page =  getInt("page",1);
 		 $keywords =  get('keywords');
@@ -30,7 +31,7 @@ class PermissionController{
     }
     
     public function create(){
-        Security::check('permission.create');
+        if( $redirect = Security::check('permission.create') ) return $redirect;
         $vars =  ['method' => 'add'];
         if( Request::isPost()){
             $row = array_only( $_POST,'code,name,description');
@@ -43,7 +44,7 @@ class PermissionController{
     }
     
     public function edit(){
-        Security::check('permission.update');
+        if( $redirect = Security::check('permission.update') ) return $redirect;
         $vars =  ['method' => 'edit'];
         if( Request::isPost()){
             $id = intval( post("id"));
@@ -59,7 +60,7 @@ class PermissionController{
     }
     
     public function delete(){
-        Security::check('permission.delete');
+        if( $redirect = Security::check('permission.delete') ) return $redirect;
         $id = getInt("id");
         PermissionModel::where("id", $id)->delete();
        return Redirect::back()->withSuccess(trans("global.delete_successfully"));

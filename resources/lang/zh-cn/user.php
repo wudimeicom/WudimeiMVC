@@ -44,6 +44,6 @@ return [
 		'new_password' => '新密码',
 		'new_password2' => '新密码',
 		'reset_password_success' => '重置密码成功！请务必记住您的新密码。',
-		
+        'modifyPassword_L' => '修改密码',
 		
 ];

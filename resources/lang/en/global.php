@@ -35,5 +35,5 @@ return [
         'Page_Prev' => 'Prev',
         'Page_Next' => 'Next',
         'Page_Last' => 'Last',
-      'permission_required' => 'The system require the permission named "{permission_name}!"',  
+      'permission_required' => 'The system require the permission named "{permission_name}" !',  
 ];

@@ -44,5 +44,7 @@ return [
 		'please_enter_the_new_password' => 'Please enter the new password',
 		'new_password' => 'new password',
 		'new_password2' => 'new password',
-		'reset_password_success' => 'reset password is successfully,please remember your new password!'
+		'reset_password_success' => 'reset password is successfully,please remember your new password!',
+        'modifyPassword_L' => 'Modify Password',
+        
 ];

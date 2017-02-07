@@ -32,7 +32,7 @@
 		   
             <form class="form-horizontal" method="post">
                 <div class="box-header with-border2222">
-                  <h3 class="box-title"></h3>
+                  <h3 class="box-title">@trans('user_group.group_name') {{@$group->group_name}}</h3>
                 </div>
               <div class="box-body">
               
@@ -42,7 +42,7 @@
                    <div>
                     @foreach( $groupPerms as $item )
                         <input type="checkbox"  name="perms[]"  value="{{$item->id}}  "  @if( in_array( $item->id ,$group_perms))checked="checked"@endif />
-                    	{{$item->name}}
+                    	@if( trans($item->name) !="") {{trans($item->name)}} @else {{$item->name}}  @endif
                     @endforeach
                     </div>
                 @endforeach

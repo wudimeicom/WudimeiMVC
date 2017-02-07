@@ -1,5 +1,7 @@
 <?php
 namespace App\Middlewares;
+use Security;
+use Redirect;
 
 class BackendAuth extends \Wudimei\Middleware{
     //private $age=10;
@@ -8,6 +10,10 @@ class BackendAuth extends \Wudimei\Middleware{
         //print_r( $this );
      //   $this->age =11;
     // return \Redirect::to("http://baidu.com");
+        
+        if( $redirect = Security::check('backend.access') ){
+            return Redirect::to("/");
+        }
     }
     
     public function terminate(){

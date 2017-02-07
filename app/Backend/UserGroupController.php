@@ -23,8 +23,8 @@ class UserGroupController{
     public function index(){
         $vars = [];
         $keywords =  get('keywords');
-        Security::check('user_group.read');
-        
+
+        if( $redirect = Security::check('user_group.read') ) return $redirect;
         $userGroup = new UserGroupModel();
         if( trim( $keywords) != "" ){
             $kw = '%' . $keywords . '%';
@@ -37,7 +37,7 @@ class UserGroupController{
     }
     
     public function _new(){
-        Security::check('user_group.create');
+        if( $redirect = Security::check('user_group.create') ) return $redirect;
         $vars = ['method' => 'add'];
         
         if( Request::isPost()){
@@ -51,7 +51,7 @@ class UserGroupController{
     }
     
     public function edit(){
-        Security::check('user_group.update');
+        if( $redirect = Security::check('user_group.update') ) return $redirect;
         $vars['method'] = 'edit';
         if( Request::isPost( ) ){
             $group_name = post('group_name');
@@ -67,14 +67,14 @@ class UserGroupController{
     }
     
     public function delete(){
-        Security::check('user_group.delete');
+        if( $redirect = Security::check('user_group.delete') ) return $redirect;
         $id = getInt("id");
         UserGroupModel::where('id',$id)->delete();
        return  Redirect::back()->withSuccess(trans("user.delete_successfully"));
     }
     
     public function permission(){
-        Security::check('user_group.permission');
+        if( $redirect = Security::check('user_group.permission_setting') ) return $redirect;
         $vars = [];
         $vars['group_id'] = $group_id = getInt("group_id");
         
@@ -96,6 +96,8 @@ class UserGroupController{
             $perms2[$group][] = $r;
         }
        // print_r( $perms2 );
+         
+        $vars['group'] = UserGroupModel::find($group_id);
         $vars['perms'] = $perms2;
         $vars['group_perms'] = UserGroupPermissionModel::getPermissions($group_id);
         Menu::active('user,userGroup');

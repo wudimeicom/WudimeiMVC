@@ -1,0 +1,3 @@
+
+2017-02-07 添加了后台访问权限，在BackendAuth.php。权限表缓存。
+为Model增添了beforeChange( $db , $args) 和 afterChange( $db , $args) 两个事件方法，供调用。change是指update,insert和delete任意一种。

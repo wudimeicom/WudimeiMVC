@@ -36,5 +36,5 @@ return [
         'Page_Prev' => '上页',
         'Page_Next' => '下页',
         'Page_Last' => '尾页',
-        'permission_required' => '系统要求"{permission_name}!"的权限。',
+        'permission_required' => '系统要求“{permission_name}”的权限。',
 ];

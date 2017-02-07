@@ -23,8 +23,8 @@ class UserController{
 		 $page =  getInt("page",1);
 		 $keywords =  get('keywords');
 		 $group_id =  getInt('group_id');
-		 
-		 Security::check("user.read");
+
+		 if( $redirect = Security::check('user.read') ) return $redirect;
 		 $user = new User();
 		 $user->select("u.*")->from("users as u");
 		 if( $group_id>0){
@@ -49,8 +49,7 @@ class UserController{
 	}
 	
 	public function add(){
-	    
-	    Security::check("user.create");
+	    if( $redirect = Security::check('user.create') ) return $redirect;
 		$vars = ['method' => 'add'];
 		 
 		$vars['user'] = new \stdClass();
@@ -61,7 +60,7 @@ class UserController{
 	}
 	
 	public function edit(){
-	    Security::check("user.update");
+	    if( $redirect = Security::check('user.update') ) return $redirect;
 		$vars = ['method' => 'edit'];
 		$id = getInt("id");
 		
@@ -95,7 +94,7 @@ class UserController{
 	}
 	
 	public function delete(){
-	    Security::check("user.delete");
+	    if( $redirect = Security::check('user.delete') ) return $redirect;
 		$id = getInt("id");
 		
 		User::where('id', $id)->delete();
@@ -103,7 +102,7 @@ class UserController{
 	}
 	
 	public function modifyPassword(){
-	    Security::check("user.modifyPassword");
+	    if( $redirect = Security::check('user.modifyPassword') ) return $redirect;
 	    $vars  = ['message' => ''];
 	    
 	    if( Request::isPost()){

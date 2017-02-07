@@ -6,4 +6,5 @@ return [
         'permission_setting' => 'Perm Setting',
         'this_group_permission_was_updated' => "This group permission was updated!",
         'group_name' => 'Group Name',
+        'permission_setting_L' => 'User Group.Permission Setting'
 ];
