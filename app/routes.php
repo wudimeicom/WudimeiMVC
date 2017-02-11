@@ -35,6 +35,9 @@ Route::group(['prefix' => Config::get('app.backend_url' ) ,'namespace' => '\\App
 });
 
 Route::group(['prefix' => '/','namespace' => 'App\\Frontend'],function(){
+    Route::get('success','InfoController@success');
+    Route::get('error','InfoController@error');
+    
 	Route::get('login','UserController@login');
 	Route::post('login','UserController@loginSubmit');
 	Route::any('register','UserController@register');

@@ -12,7 +12,7 @@ class BackendAuth extends \Wudimei\Middleware{
     // return \Redirect::to("http://baidu.com");
         
         if( $redirect = Security::check('backend.access') ){
-            return Redirect::to("/");
+            return Redirect::to("/error");
         }
     }
     
