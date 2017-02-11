@@ -101,7 +101,16 @@ return [
 						__DIR__ . '/view.php'
 				] 
 		],
-		'XSS' => [ 
-				'class' => "Wudimei\\StaticProxies\\XSS",
+        /**
+         * 
+         */
+        'XSS' => [
+                'class' => "Wudimei\\StaticProxies\\XSS2",
+        ],
+		'XSS1' => [ 
+				'class' => "Wudimei\\StaticProxies\\XSS1", //clean via xmldocument
 		],
+        'XSS2' => [
+                'class' => "Wudimei\\StaticProxies\\XSS2",//clean via preg_replace text mode
+        ],
 ];
