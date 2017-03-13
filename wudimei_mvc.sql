@@ -222,7 +222,7 @@ CREATE TABLE `w_users` (
 
 LOCK TABLES `w_users` WRITE;
 /*!40000 ALTER TABLE `w_users` DISABLE KEYS */;
-INSERT INTO `w_users` VALUES (4,'yqr2','yqr2223@wudimei.com','e10adc3949ba59abbe56e057f20f883e','0000-00-00 00:00:00','e2eea3000c3d5c83a665ec68abbecf57',0);
+INSERT INTO `w_users` VALUES (4,'yqr2','yqr2223@wudimei.com','e10adc3949ba59abbe56e057f20f883e','0000-00-00 00:00:00','c2a76963dfe6ce4e7127fab1419eda91',0);
 /*!40000 ALTER TABLE `w_users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -260,4 +260,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-02-11 12:16:04
+-- Dump completed on 2017-03-13 14:38:23

@@ -9,6 +9,7 @@ use Lang;
 use Validator;
 use App\Models\User;
 use Mail;
+use App\Library\Security;
 
 class UserController{
 	
@@ -58,6 +59,7 @@ class UserController{
 			 Auth::attempt(['email'=> $login,'password'=> $password], $remember_me );
 		}
 		if( Auth::check() ){
+		    Security::loadMyPermissions();
 			return Redirect::to("/");
 		}
 		else{

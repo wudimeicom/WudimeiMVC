@@ -1,6 +1,6 @@
 <?php
 namespace App\Middlewares;
-use Security;
+use App\Library\Security;
 use Redirect;
 
 class BackendAuth extends \Wudimei\Middleware{

@@ -5,17 +5,19 @@ use Menu;
 use View;
 use Request;
 use Redirect;
-use Security;
+use App\Library\Security;
 
 class PermissionController{
     
     public function index(){
         #@ abc('name')
+       
         if( $redirect = Security::check('permission.read') ) return $redirect;
+       
          $vars = [];
 		 $page =  getInt("page",1);
 		 $keywords =  get('keywords');
-		 		 
+		
 		 $perm = new PermissionModel();
 	  
 		 if( trim( $keywords) != "" ){
@@ -24,10 +26,13 @@ class PermissionController{
 		 }
 		 
 		 $vars['pgPermissions'] =   $perm->paginate(10,$page );
-		 
+		
 		 
 		 Menu::active('user,permissions');
-		return  View::make("backend.permission.index",$vars);
+		
+		$v = View::make("backend.permission.index",$vars);
+		 
+		return $v;
     }
     
     public function create(){
@@ -56,7 +61,10 @@ class PermissionController{
         $id = getInt("id");
         $vars['item'] = PermissionModel::find($id);
         Menu::active('user,permissions');
-        return  View::make("backend.permission.form",$vars);
+        
+        $v = View::make("backend.permission.form",$vars);
+        
+        return $v;
     }
     
     public function delete(){

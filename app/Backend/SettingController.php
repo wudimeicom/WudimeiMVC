@@ -8,7 +8,7 @@ use Request;
 use Setting;
 use App\Models\SettingGroupModel;
 use Menu;
-use Security;
+use App\Library\Security;
 
 class SettingController{
 	public function index(){

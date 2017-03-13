@@ -5,7 +5,7 @@ namespace App\Backend;
 use Config;
 use View;
 use Menu;
-use Security;
+use App\Library\Security;
 
 class IndexController{
 	public function index(){

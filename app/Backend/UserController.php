@@ -9,7 +9,7 @@ use Redirect;
 use Validator;
 use Session;
 use Request;
-use Security;
+use App\Library\Security;
 use Wudimei\ArrayHelper;
 
 class UserController{
@@ -78,7 +78,7 @@ class UserController{
 		    $id = intval( $_POST['id'] );
 		    $users_groups = @$_POST['users_group'];
 		    
-		    $row = ArrayHelper::only( $_POST, 'username,email');
+		    $row = array_only( $_POST, 'username,email');
 		    User::where('id' , $id )->update(  $row );
 
 		    UsersGroupModel::setGroupIds( $id, $users_groups );

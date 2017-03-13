@@ -74,9 +74,7 @@ return [
                         __DIR__ . '/../app/routes.php'
                 ]
         ],
-        'Security' => [ 
-				'class' => "Wudimei\\StaticProxies\\Security",
-		],
+        
 		'Session' => [ 
 				'class' => "Wudimei\\StaticProxies\\Session",
 				'init_method' => 'loadConfig',

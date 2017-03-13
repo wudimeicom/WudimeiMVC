@@ -9,7 +9,7 @@ use Redirect;
 use Validator;
 use Session;
 use Request;
-use Security;
+use App\Library\Security;
 
 
 use Wudimei\ArrayHelper;
