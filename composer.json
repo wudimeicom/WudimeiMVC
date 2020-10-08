@@ -5,7 +5,7 @@
         "php": ">=7.0"
     },
     "homepage": "http://github.com/wudimeicom/wudimeiMVC",
-    "type": "library",
+    "type": "project",
     "license": "MIT",
     "authors": [
         {
