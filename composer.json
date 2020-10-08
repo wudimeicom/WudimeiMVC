@@ -1,5 +1,5 @@
 {
-    "name": "wudimeicom/wudimeiMVC",
+    "name": "wudimeicom/wudimeimvc",
     "description": "wudimei php framework for web mvc development",
     "require": {
         "php": ">=7.0"
@@ -14,7 +14,7 @@
         }
     ],
     "require": {
-        "wudimeicom/WudimeiPHP": "dev-main"
+        "wudimeicom/wudimeiphp": "dev-main"
      },
     "autoload": {
         "psr-4": {
