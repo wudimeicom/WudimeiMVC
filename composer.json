@@ -1,19 +1,24 @@
 {
-    "name": "wudimei.com/wudimei-mvc",
+    "name": "wudimeicom/wudimeiMVC",
     "description": "wudimei php framework for web mvc development",
     "require": {
-        "php": ">=5.6.0"
+        "php": ">=7.0"
     },
-    "homepage": "http://www.wudimei.com",
+    "homepage": "http://github.com/wudimeicom/wudimeiMVC",
     "type": "library",
     "license": "MIT",
     "authors": [
         {
             "name": "Yang Qing-rong",
-            "homepage": "http://www.wudimei.com/yangqingrong"
+            "homepage": "http://wudimei.com/yangqingrong"
         }
     ],
     "require": {
-        "wudimei.com/wudimei-php": "dev-master"
-     }
+        "wudimeicom/WudimeiPHP": "dev-main"
+     },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    }
 }
