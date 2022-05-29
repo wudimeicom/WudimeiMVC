@@ -35,7 +35,10 @@ server {
 
 # backend
 http://Your_ip_or_domain/backend_2016
-user: yqr2 ,password:123456
+
+user: yqr2 
+
+password:123456
 
 # links
 1. wudimei template engine
