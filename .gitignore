@@ -5,3 +5,4 @@ storage/sessions/
 storage/views_c/
 vendor/
 composer.lock
+/nbproject/private/

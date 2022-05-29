@@ -15,7 +15,7 @@
     ],
     "require": {
         "wudimeicom/wudimeiphp": "dev-main",
-        "wudimeicom/template": "dev-main"
+        "wudimei/template": "dev-main"
      },
     "autoload": {
         "psr-4": {
