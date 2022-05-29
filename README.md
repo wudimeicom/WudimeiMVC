@@ -18,21 +18,18 @@ http://wudimei.com
 ```nginx
 server {
     listen       80;
-    server_name  127.0.8.18;
+    server_name  127.0.10.2;
     root   /www/open/WudimeiMVC/public;
     location / {
         index  index.php index.html index.htm;
         try_files $uri $uri/ /index.php?$query_string;
     }
     location ~ \.php$ {
-                    fastcgi_split_path_info ^((?U).+.php)(/?.+)$;
-
-        fastcgi_pass   fastcgi_backend;
+        fastcgi_pass   127.0.0.1:9090;
         fastcgi_index  index.php;
         fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
-                    fastcgi_param PATH_INFO $fastcgi_path_info;
         include        fastcgi_params;
-    }
+     }
 }
 ```
 

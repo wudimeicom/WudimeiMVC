@@ -2,7 +2,7 @@
 
 namespace App\Library\Template;
 
-use Wudimei\StaticProxy;
+use Wudimei\StaticProxy;  
 
 class View {
 

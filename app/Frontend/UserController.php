@@ -35,7 +35,7 @@ class UserController {
         $login = Request::post('login');
         $password = Request::post('password');
         $remember_me = Request::post('remember_me', false);
-       // print_r( $_POST ); echo $login; exit();
+        // print_r( $_POST ); echo $login; exit();
         if ($remember_me != false) {
             $remember_me = true;
         }
@@ -62,7 +62,7 @@ class UserController {
             Security::loadMyPermissions();
             return Redirect::to("/");
         } else {
-            return Redirect::to("/login")->with('message',trans('user.wrong_username_or_password'));
+            return Redirect::to("/login")->with('message', trans('user.wrong_username_or_password'));
         }
     }
 
