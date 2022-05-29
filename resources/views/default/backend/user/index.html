@@ -1,0 +1,71 @@
+
+@extends('backend.layouts.master')
+
+@section('title'  )@trans('user.Users') @endsection
+@section('content_header' )@trans('user.Users')  @endsection
+@section('content_header_desc'  )@trans('user.User List')  @endsection
+
+@section('breadcrumb')
+
+<li class="active">@trans('user.Users')</li>
+@endsection
+
+@section('content') 
+
+{!! Alert::display() !!}
+
+@php
+require_once BASE_PATH . '/vendor/wudimeicom/wudimeiphp/View/html.php';
+@endphp
+<div class="box">
+
+    <div class="box-body">
+
+        <form class="form-inline" method="get">
+            <div class="form-group">
+                <label class="sr-only" for="keywords">@trans('global.keywords')</label>
+                <input type="text" class="form-control"  id="keywords" name="keywords"  value="{{Request::get('keywords')}}" placeholder="">
+            </div>
+            <div class="form-group">
+                 {!! html_select( ['options' =>$groups ,'value_key' =>'id', 'output_key' => 'group_name', 'name' => "group_id", 
+                'selected' => Request::get('group_id'),  'class' => "form-control",  'first_value' =>0, 'first_text' =>trans('global.please_select') ]) !!}  
+            </div>
+            <input type="submit"  class="btn btn-info btn-flat"  value="@trans('global.search')" >
+        </form>
+        <br />
+
+        <table class="table">
+            <tr>
+                <th>@trans('user.User ID')</th>
+                <th>@trans('user.Username')</th>
+                <th>@trans('user.email')</th>
+                <th>@trans('global.created_at')</th>
+                <th>@trans('global.actions')</th>
+            </tr>
+            @foreach( $pgUser->data as $user)
+            <tr>
+                <td>{{$user->id}}</td>
+                <td>{{$user->username}}</td>
+                <td>{{$user->email}}</td>
+                <td>{{$user->created_at}}</td>
+                <td>
+                    <a href="{{url_b('/users/edit?id=')}}{{$user->id}}"   class="btn btn-success btn-xs btn-flat"  ><i class="fa fa-trash"></i> @trans('global.Edit')</a>
+                    <a href="{{url_b('/users/delete?id=')}}{{$user->id}}"  onclick="return confirm('@trans('global.delete_confirm')')"  class="btn btn-danger btn-xs btn-flat" ><i class="fa fa-trash"></i> @trans('global.Delete')</a>
+                </td>
+            </tr>
+            @foreachelse
+            <tr>
+                <td colspan="5">@trans('global.no result available')</td>
+            </tr>
+            @endforeach
+        </table>
+
+        {!! $pgUser->render('?page={page}&keywords='.@$_GET['keywords'].'&group_id='.@$_GET['group_id'] ) !!}
+    </div>
+
+</div>
+
+
+
+
+@endsection

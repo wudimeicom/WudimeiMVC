@@ -1,0 +1,68 @@
+@extends('backend.layouts.master')
+
+@section('title' )@trans('permission.name') @endsection
+@section('content_header'  )@trans('permission.name') @endsection
+@section('content_header_desc' )@trans('permission.header_desc') @endsection
+
+@section('breadcrumb')
+
+<li class="active">@trans('permission.name')</li>
+@endsection
+
+@section('content') 
+
+{!! Alert::display() !!}
+<div class="box">
+
+    <div class="box-body">
+
+
+
+        <form class="form-inline" method="get">
+            <div class="form-group">
+                <a href="{{url_b('/permissions/create')}}"  class="btn btn-success btn-flat" ><i class="fa fa-plus"></i> @trans("global.new")</a>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="keywords">@trans('global.keywords')</label>
+                <input type="text" class="form-control"  id="keywords" name="keywords"  value="{{Request::get('keywords')}}" placeholder="">
+            </div>
+
+            <input type="submit"  class="btn btn-info btn-flat"  value="@trans('global.search')" >
+        </form>
+        <br />
+
+        <table class="table">
+            <tr>
+                <th>@trans('global.id')</th>
+                <th>@trans('permission.code')</th>
+                <th>@trans('permission.name')</th>
+                <th>@trans('permission.description')</th>
+                <th>@trans('global.actions')</th>
+            </tr>
+            @foreach( $pgPermissions->data as $item)
+            <tr>
+                <td>{{$item->id}}</td>
+                <td>{{$item->code}}</td>
+                <td>@if( trans($item->name) !="") {{trans($item->name)}} @else {{$item->name}}  @endif</td>
+                <td>{{$item->description}}</td>
+                <td>
+                    <a href="{{url_b('/permissions/edit?id=')}}{{$item->id}}"     class="btn btn-success btn-xs btn-flat" ><i class="fa fa-trash"></i> @trans('global.Edit')</a>
+                    <a href="{{url_b('/permissions/delete?id=')}}{{$item->id}}"  onclick="return confirm('@trans('global.delete_confirm')')"   class="btn btn-danger btn-xs btn-flat" ><i class="fa fa-trash"></i>@trans('global.Delete')</a>
+                </td>
+            </tr>
+            @foreachelse
+            <tr>
+                <td colspan="5">@trans('global.no result available')</td>
+            </tr>
+            @endforeach
+        </table>
+
+        {!! $pgPermissions->render('?page={page}&keywords='.@$_GET['keywords'].'&group_id='.@$_GET['group_id'] ) !!}
+    </div>
+
+</div>
+
+
+
+
+@endsection

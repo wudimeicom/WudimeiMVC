@@ -22,16 +22,19 @@ class UserGroupController{
     }
     public function index(){
         $vars = [];
-        $keywords =  get('keywords');
-
+        $keywords =  trim(get('keywords'));
+        
+       
         if( $redirect = Security::check('user_group.read') ) return $redirect;
         $userGroup = new UserGroupModel();
         if( trim( $keywords) != "" ){
+             var_dump($keywords);
             $kw = '%' . $keywords . '%';
-            $userGroup = $userGroup->whereRaw(' (  id like ? or group_name like ? ) ' , [$kw, $kw] );
+           $userGroup->whereRaw(' (  id like ? or group_name like ? ) ' , [$kw, $kw] );
         }
-        $vars['groups'] = UserGroupModel::get();
-        	
+        
+         $vars['groups'] =$userGroup->get();
+         	
         Menu::active('user,userGroup');
        return  View::make("backend.user_group.index",$vars);
     }

@@ -91,14 +91,13 @@ return [
     'Validator' => [
         'class' => "Wudimei\\StaticProxies\\Validator",
     ],
-     
     'View' => [
         'class' => "App\Library\Template\\View",
         'init_method' => 'loadConfig',
         'args' => [
             __DIR__ . '/view.php'
         ]
-    ], 
+    ],
     /**
      * 
      */

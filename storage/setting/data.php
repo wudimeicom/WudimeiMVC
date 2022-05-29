@@ -9,5 +9,5 @@
   'SEO.DESCRIPTION' => '描述，220个字符以内。22',
   'SITE.URL_PREFIX' => 'http://wudimeishop.anli.wudimei.com',
   'SITE.QQ' => '290359552,杨庆荣
-214341,张',
+13714715608,杨',
 ); ?>

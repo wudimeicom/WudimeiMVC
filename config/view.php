@@ -4,7 +4,7 @@ return [
     'paths' => [
         BASE_PATH . '/resources/views/default'
     ],
-    'compiled' => BASE_PATH . '/storage/view_c',
+    'compiled' => BASE_PATH . '/storage/views_c',
     //view's file extension, html
     'ext' => 'html',
     //if true,recompile anyhow

@@ -32,6 +32,6 @@ Wudimei\StaticProxyLoader::loadConfig(BASE_PATH . "/config/static_proxy.php");
 $_POST = XSS2::cleanDeep($_POST);
 $_GET = XSS2::cleanDeep($_GET);
 
-//Session::start();
+Session::start();
 
 Router::handle();

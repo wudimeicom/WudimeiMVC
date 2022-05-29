@@ -1,20 +1,24 @@
 http://wudimei.com
 
 #installation 1
-1. please clone or download Wudimei PHP, url: https://github.com/wudimeicom/WudimeiPHP
+1. composer install
+```cmd
+ php composer.phar install
+```
 
-2. please move Wudimei PHP files to this project,in vendor/Wudimei,make sure vendor/Wudimei/DB.php exists
 
-3. please edit files in config folder
+2. please import `/wudimei_mvc.sql` to mariadb/mysql
 
-4. please import wudimei_mvc.sql to mariadb/mysql
+3. please edit files in config folder 
 
-#installation 2
-php composer.phar install
 
-# documentaion
+# links
+1. wudimei template engine
+https://github.com/wudimei/template
+2. wudimei php
+https://github.com/wudimeicom/wudimeiphp
 
-http://php.wudimei.com/doc/cn/201609/index.md.html
+
 
 
 
