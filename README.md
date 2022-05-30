@@ -45,8 +45,8 @@ password:123456
 https://github.com/wudimei/template
 2. wudimei php
 https://github.com/wudimeicom/wudimeiphp
-
-
+3. IDE Content Assist for WudimeiPHP
+https://github.com/yangqingrong/WudimeiPHP_IDE_Content_Assist
 
 
 

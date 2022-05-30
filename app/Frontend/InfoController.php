@@ -13,6 +13,9 @@ class InfoController {
     }
 
     public function error() {
+        
+         
+        
         $vars['message'] = Session::get('message');
         return View::make("frontend.error", $vars);
     }
