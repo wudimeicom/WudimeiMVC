@@ -23,14 +23,14 @@ foreach ($autoload_files as $file) {
 
  
 //$GLOBALS['db_debug'] =1;
-require_once BASE_PATH . '/bootstrap/autoload.php';
+require_once BASE_PATH . '/bootstrap/autoload.php'; //load static proxy,for example Session
 require_once BASE_PATH . '/app/functions/helpers.php';
 require_once BASE_PATH .'/vendor/wudimeicom/wudimeiphp/helpers.php';
 
 Wudimei\StaticProxyLoader::loadConfig(BASE_PATH . "/config/static_proxy.php");
 
-$_POST = XSS2::cleanDeep($_POST);
-$_GET = XSS2::cleanDeep($_GET);
+//$_POST = XSS2::cleanDeep($_POST);
+//$_GET = XSS2::cleanDeep($_GET);
 
 Session::start();
 
